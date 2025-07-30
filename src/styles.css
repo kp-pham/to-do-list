@@ -21,17 +21,31 @@ body {
 .sidebar-menu {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .sidebar-menu > button  {
     display: flex;
     align-items: center;
     gap: 20px;
+    padding: 10px;
+    background-color: #FBFAF8;
+    border: none;
+    border-radius: 10px;
+}
+
+button:hover, button:focus {
+    background-color: #F5F4FA;
+}
+
+button:focus {
+    outline: none;
 }
 
 .sidebar-menu > button > svg {
     flex-basis: 10%;
 }
+
 
 #content {
     display: grid;
