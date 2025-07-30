@@ -9,8 +9,28 @@ body {
 }
 
 .sidebar {
+    background-color: #FBFAF8;
+    padding: 15px;
+}
+
+.sidebar nav {
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+
+.sidebar-menu {
     display: flex;
     flex-direction: column;
+}
+
+.sidebar-menu > button  {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sidebar-menu > button > svg {
+    flex-basis: 10%;
 }
 
 #content {
