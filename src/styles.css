@@ -18,20 +18,27 @@ body {
     grid-template-rows: 1fr 3fr;
 }
 
-.sidebar-menu {
+nav > div {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.sidebar-menu > button  {
+nav button {
     display: flex;
     align-items: center;
-    gap: 20px;
     padding: 10px;
     background-color: #FBFAF8;
     border: none;
     border-radius: 10px;
+}
+
+.sidebar-menu button { 
+    gap: 20px;
+}
+
+.projects button {
+    gap: 5px;
 }
 
 button:hover, button:focus {
@@ -42,10 +49,13 @@ button:focus {
     outline: none;
 }
 
-.sidebar-menu > button > svg {
+nav button > svg {
     flex-basis: 10%;
 }
 
+.projects button > svg:first-child {
+    flex-basis: 5%;
+}
 
 #content {
     display: grid;
