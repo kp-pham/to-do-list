@@ -3,7 +3,7 @@ body {
     padding: 0;
 }
 
-#content {
+.container {
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
@@ -11,4 +11,9 @@ body {
 .sidebar {
     display: flex;
     flex-direction: column;
+}
+
+#content {
+    display: grid;
+    grid-auto-columns: 1fr;
 }

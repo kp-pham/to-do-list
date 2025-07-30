@@ -17,3 +17,5 @@ class Project {
         this.todoItems.push(todoItem);
     }
 }
+
+export default Project;

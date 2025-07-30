@@ -22,3 +22,5 @@ class TodoItem {
         this.priority = priority;
     }
 }
+
+export default TodoItem;
