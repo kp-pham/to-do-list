@@ -178,8 +178,8 @@
             <dialog id="new-task">
                 <form method="dialog">
                     <section>
-                        <label id="name">Task Name</label>
-                        <input type="text" id="name">
+                        <label id="task-name">Task Name</label>
+                        <input type="text" id="task-name">
                     </section>
 
                     <section>
@@ -188,8 +188,8 @@
                     </section>
 
                     <section>
-                        <label id="description">Description</label>
-                        <textarea name="description" id="description"></textarea>
+                        <label id="task-description">Description</label>
+                        <textarea name="description" id="task-description"></textarea>
                     </section>
 
                     <section>
@@ -215,7 +215,20 @@
             </dialog>
             <dialog id="new-project">
                 <form method="dialog">
-                    <button type="submit">New project</button>
+                    <section>
+                        <label for="project-name">Project Name</label>
+                        <input type="text" id="project-name">
+                    </section>
+
+                    <section>
+                        <label for="project-description">Description</label>
+                        <textarea name="description" id="project-description"></textarea>
+                    </section>
+
+                    <section>
+                        <button type="button">Cancel</button>
+                        <button type="submit">New project</button>
+                    </section>
                 </form>
             </dialog>
         </div>

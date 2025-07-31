@@ -8,3 +8,9 @@ const closeModal = () => modal.close();
 
 button.addEventListener("click", displayModal);
 cancelButton.addEventListener("click", closeModal);
+
+const projectModal = document.getElementById("new-project");
+
+document.getElementById("add-project").addEventListener("click", event => {
+    projectModal.showModal();
+});
