@@ -37,3 +37,13 @@ function changeTheme() {
 }
 
 document.getElementById("theme-toggle").addEventListener("click", changeTheme);
+
+const button = document.getElementById("test");
+
+button.addEventListener("click", event => {
+    if (button.classList.contains("open"))
+        button.classList.remove(...button.classList);
+    
+    else
+        button.classList.add("open");
+});

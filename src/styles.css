@@ -87,6 +87,14 @@ nav > div:last-child::-webkit-scrollbar {
     background: transparent;
 }
 
+nav > div:last-child > button:not(.open) > svg:not(:first-child) {
+    display: none;
+}
+
+nav > div:last-child > button.open > svg:first-child {
+    display: none;
+}
+
 nav button {
     display: flex;
     align-items: center;
@@ -110,10 +118,6 @@ button:hover {
 
 nav button > svg {
     flex-basis: 10%;
-}
-
-.projects button > svg:first-child {
-    flex-basis: 5%;
 }
 
 #content {
