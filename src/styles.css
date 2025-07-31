@@ -2,6 +2,7 @@
     --color-icon-fill: #000000;
     --color-button-hover: #F5F4FA;
     --color-sidebar-bg: #FBFAF8; 
+    --color-input-bg: #F5F4FA;
     --color-base-text: #000000;
     --color-base-bg: #FFFFFF;
 }
@@ -10,10 +11,10 @@
     --color-icon-fill: #FFFFFF;
     --color-button-hover: #34343C;
     --color-sidebar-bg: #2B2B33;
+    --color-input-bg: #FFFFFF;
     --color-base-text: #FFFFFF;
     --color-base-bg: #242329;
 }
-
 
 body {
     margin: 0;
@@ -130,4 +131,51 @@ dialog::backdrop {
     background-color: rgb(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+}
+
+dialog {
+    width: 40%;
+    border: none;
+    border-radius: 10px;
+    color: var(--color-base-text);
+    background-color: var(--color-base-bg);
+}
+
+dialog > form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form > section:not(:last-child) {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form > section:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+section > input {
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: var(--color-input-bg);
+}
+
+section:last-child button {
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+section:last-child button:first-child {
+    background-color: #E24430;
+}
+
+section:last-child button:last-child {
+    background-color: #C57C06;
 }
