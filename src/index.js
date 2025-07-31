@@ -1,6 +1,7 @@
 import TodoItem from "./todo-item.js";
 import Project from "./project.js";
 import "./modals.js";
+import "./themes.js";
 import "./styles.css";
 
 const content = document.getElementById("content");
@@ -30,14 +31,6 @@ project.todoItems.forEach(todoItem => {
 
     content.appendChild(task);
 });
-
-function changeTheme() {
-    const root = document.documentElement;
-    const theme = root.className === "dark" ? "light" : "dark";
-    root.className = theme;
-}
-
-document.getElementById("theme-toggle").addEventListener("click", changeTheme);
 
 const button = document.getElementById("test");
 
