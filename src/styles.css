@@ -1,6 +1,32 @@
+:root.light {
+    --color-icon-fill: #000000;
+    --color-button-outline: #F5F4FA;
+    --color-sidebar-bg: #FBFAF8; 
+    --color-base-text: #000000;
+    --color-base-bg: #FFFFFF;
+}
+
+:root.dark {
+    --color-icon-fill: #FFFFFF;
+    --color-button-outline: #34343C;
+    --color-sidebar-bg: #2B2B33;
+    --color-base-text: #FFFFFF;
+    --color-base-bg: #242329;
+}
+
 body {
     margin: 0;
     padding: 0;
+    color: var(--color-base-text);
+    background-color: var(--color-base-bg);
+}
+
+button {
+    color: var(--color-base-text);
+}
+
+svg {
+    fill: var(--color-icon-fill);
 }
 
 .container {
@@ -9,13 +35,14 @@ body {
 }
 
 .sidebar {
-    background-color: #FBFAF8;
+    background-color: var(--color-sidebar-bg);
     padding: 15px;
 }
 
 nav {
     display: grid;
     grid-template-rows: 0.25fr 0.75fr 2fr;
+    gap: 10px;
     height: 100vh;
 }
 
@@ -29,18 +56,18 @@ nav {
     flex-basis: 15%;
 }
 
-nav > div:first-child {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-}
-
-nav > div:first-child > button { 
+#theme-toggle { 
     display: flex;
     justify-content: center;
 }
 
-nav > div:first-child > button > svg {
+#theme-toggle svg {
     flex-basis: 80%;
+}
+
+nav > div:first-child {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
 }
 
 nav > div:not(:first-child) {
@@ -50,6 +77,7 @@ nav > div:not(:first-child) {
 }
 
 nav > div:last-child {
+    padding: 5px;
     overflow-y: auto;
 }
 
@@ -57,7 +85,7 @@ nav button {
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #FBFAF8;
+    background-color: var(--color-sidebar-bg);
     border: none;
     border-radius: 10px;
 }
@@ -70,12 +98,8 @@ nav button {
     gap: 5px;
 }
 
-button:hover, button:focus {
-    background-color: #F5F4FA;
-}
-
-button:focus {
-    outline: none;
+button:hover {
+    background-color: var(--color-button-outline);
 }
 
 nav button > svg {
