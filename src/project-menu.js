@@ -1,11 +1,16 @@
 const projects = document.querySelector(".projects");
 
-function updateFolderIcon(project) {
-    projectOpened(project) ? closeProject(project) : openProject(project);
-} 
+function updateFolderIcon(folder) {
+    folderOpened(folder) ? closeFolder(folder) : openFolder(folder);
+}
 
-const projectOpened = project => project.classList.contains("open");
-const openProject = project => project.classList.add("open");
-const closeProject = project => project.classList.remove(...project.classList);
+const folderOpened = project => project.classList.contains("open");
+const openFolder = project => project.classList.add("open");
+const closeFolder = project => project.classList.remove(...project.classList);
 
-projects.addEventListener("click", event => updateFolderIcon(event.target));
+const clickedProject = target => target.tagName === "BUTTON";
+
+projects.addEventListener("click", event => {
+    if (clickedProject(event.target))
+        updateFolderIcon(event.target);
+});
