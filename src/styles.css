@@ -1,6 +1,6 @@
 :root.light {
     --color-icon-fill: #000000;
-    --color-button-outline: #F5F4FA;
+    --color-button-hover: #F5F4FA;
     --color-sidebar-bg: #FBFAF8; 
     --color-base-text: #000000;
     --color-base-bg: #FFFFFF;
@@ -8,7 +8,7 @@
 
 :root.dark {
     --color-icon-fill: #FFFFFF;
-    --color-button-outline: #34343C;
+    --color-button-hover: #34343C;
     --color-sidebar-bg: #2B2B33;
     --color-base-text: #FFFFFF;
     --color-base-bg: #242329;
@@ -18,12 +18,15 @@
 body {
     margin: 0;
     padding: 0;
-    color: var(--color-base-text);
-    background-color: var(--color-base-bg);
 }
 
 button {
     color: var(--color-base-text);
+    background-color: var(--color-sidebar-bg);
+}
+
+button:hover {
+    background-color: var(--color-button-hover);
 }
 
 svg {
@@ -36,6 +39,7 @@ svg {
 }
 
 .sidebar {
+    color: var(--color-base-text);
     background-color: var(--color-sidebar-bg);
     padding: 15px;
 }
@@ -99,7 +103,6 @@ nav button {
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: var(--color-sidebar-bg);
     border: none;
     border-radius: 10px;
 }
@@ -112,10 +115,6 @@ nav button {
     gap: 5px;
 }
 
-button:hover {
-    background-color: var(--color-button-outline);
-}
-
 nav button > svg {
     flex-basis: 10%;
 }
@@ -123,4 +122,6 @@ nav button > svg {
 #content {
     display: grid;
     grid-auto-columns: 1fr;
+    color: var(--color-base-text);
+    background-color: var(--color-base-bg);
 }
