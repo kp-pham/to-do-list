@@ -14,6 +14,14 @@
     --color-base-bg: #242329;
 }
 
+.projects::-webkit-scrollbar {
+    background: transparent;
+}
+
+.projects::-webkit-scrollbar-button {
+    display: none;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -79,6 +87,7 @@ nav > div:not(:first-child) {
 nav > div:last-child {
     padding: 5px;
     overflow-y: auto;
+    scrollbar-color: #8B8B8B transparent;
 }
 
 nav button {
