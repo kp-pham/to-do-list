@@ -1,5 +1,6 @@
-import TodoItem from "./app/todo-item.js";
-import Project from "./app/project.js";
+import TodoItem from "./todo-item.js";
+import Project from "./project.js";
+import "./add-todo-item.js";
 import "./styles.css";
 
 const content = document.getElementById("content");
