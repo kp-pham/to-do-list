@@ -1,6 +1,8 @@
 :root.light {
     --color-icon-fill: #000000;
     --color-button-hover: #F5F4FA;
+    --color-project-open: #F5F4FA;
+    --color-project-open-hover: #DBDBDB;
     --color-sidebar-bg: #FBFAF8; 
     --color-field-bg: #F5F4FA;
     --color-field-border: #000000;
@@ -11,6 +13,8 @@
 :root.dark {
     --color-icon-fill: #FFFFFF;
     --color-button-hover: #34343C;
+    --color-project-open: #34343C;
+    --color-project-open-hover: #393939;
     --color-sidebar-bg: #2B2B33;
     --color-field-bg: #FFFFFF;
     --color-field-border: #FFFFFF;
@@ -31,6 +35,19 @@ button {
 button:hover {
     background-color: var(--color-button-hover);
     cursor: pointer;
+}
+
+button.open {
+    background-color: var(--color-project-open);
+}
+
+button:hover.open {
+    /* background-color: #A9A9A9; */
+    /* background-color: #7a7a7a; */
+    /* background-color: #6a6a6a; */
+    background-color: var(--color-project-open-hover);
+    /* background-color: #4a4a4a;
+    background-color: #393939; */
 }
 
 svg {
