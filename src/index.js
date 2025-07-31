@@ -1,6 +1,6 @@
 import TodoItem from "./todo-item.js";
 import Project from "./project.js";
-import "./add-todo-item.js";
+import "./modals.js";
 import "./styles.css";
 
 const content = document.getElementById("content");
