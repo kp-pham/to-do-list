@@ -1,7 +1,8 @@
 import TodoItem from "./todo-item.js";
 import Project from "./project.js";
-import "./modals.js";
 import "./themes.js";
+import "./modals.js";
+import "./project-menu.js";
 import "./styles.css";
 
 const content = document.getElementById("content");
@@ -32,12 +33,3 @@ project.todoItems.forEach(todoItem => {
     content.appendChild(task);
 });
 
-const button = document.getElementById("test");
-
-button.addEventListener("click", event => {
-    if (button.classList.contains("open"))
-        button.classList.remove(...button.classList);
-    
-    else
-        button.classList.add("open");
-});
