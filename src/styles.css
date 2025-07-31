@@ -125,3 +125,9 @@ nav button > svg {
     color: var(--color-base-text);
     background-color: var(--color-base-bg);
 }
+
+dialog::backdrop {
+    background-color: rgb(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
