@@ -1,10 +1,12 @@
 const addTaskButton = document.getElementById("add-task");
 const newTaskModal = document.getElementById("new-task");
-const newTaskForm = newTaskModal.firstChild;
+const newTaskForm = newTaskModal.firstElementChild;
+const cancelTaskButton = newTaskForm.lastElementChild.firstElementChild;
 
 const addProjectButton = document.getElementById("add-project");
 const newProjectModal = document.getElementById("new-project");
-const newProjectForm = newProjectModal.firstChild;
+const newProjectForm = newProjectModal.firstElementChild;
+const cancelProjectButton = newProjectForm.lastElementChild.firstElementChild;
 
 const cancelButton = document.querySelector(".cancel-form");
 
@@ -20,9 +22,8 @@ function createCloseModal(modal) {
     }
 }
 
-
 addTaskButton.addEventListener("click", createDisplayModal(newTaskModal));
 addProjectButton.addEventListener("click", createDisplayModal(newProjectModal));
 
-addTaskButton.addEventListener("click", createCloseModal(newTaskModal));
-addProjectButton.addEventListener("click", createCloseModal(newProjectModal));
+cancelTaskButton.addEventListener("click", createCloseModal(newTaskModal));
+cancelProjectButton.addEventListener("click", createCloseModal(newProjectModal));
