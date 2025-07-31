@@ -15,18 +15,42 @@ body {
 
 nav {
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 0.25fr 0.75fr 2fr;
     height: 100vh;
 }
 
-.projects {
-    overflow-y: auto;
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-nav > div {
+.profile svg {
+    flex-basis: 15%;
+}
+
+nav > div:first-child {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+nav > div:first-child > button { 
+    display: flex;
+    justify-content: center;
+}
+
+nav > div:first-child > button > svg {
+    flex-basis: 80%;
+}
+
+nav > div:not(:first-child) {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+nav > div:last-child {
+    overflow-y: auto;
 }
 
 nav button {
