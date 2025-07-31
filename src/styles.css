@@ -2,7 +2,8 @@
     --color-icon-fill: #000000;
     --color-button-hover: #F5F4FA;
     --color-sidebar-bg: #FBFAF8; 
-    --color-input-bg: #F5F4FA;
+    --color-field-bg: #F5F4FA;
+    --color-field-border: #000000;
     --color-base-text: #000000;
     --color-base-bg: #FFFFFF;
 }
@@ -11,7 +12,8 @@
     --color-icon-fill: #FFFFFF;
     --color-button-hover: #34343C;
     --color-sidebar-bg: #2B2B33;
-    --color-input-bg: #FFFFFF;
+    --color-field-bg: #FFFFFF;
+    --color-field-border: #FFFFFF;
     --color-base-text: #FFFFFF;
     --color-base-bg: #242329;
 }
@@ -144,8 +146,8 @@ dialog {
 }
 
 dialog > form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr) 2fr 1fr;
     gap: 10px;
 }
 
@@ -161,10 +163,16 @@ form > section:last-child {
     gap: 20px;
 }
 
-section > input {
+section > input,
+section > textarea {
     padding: 5px 10px;
+    border: 1px solid var(--color-field-border);
     border-radius: 10px;
-    background-color: var(--color-input-bg);
+    background-color: var(--color-field-bg);
+}
+
+section > textarea {
+    flex-grow: 1;
 }
 
 section:last-child button {
