@@ -12,13 +12,19 @@ const cancelButton = document.querySelector(".cancel-form");
 
 function createDisplayModal(modal) {
     return function() {
-        return modal.showModal();
+        modal.showModal();
     }
 }
 
 function createCloseModal(modal) {
     return function() {
-        return modal.close();
+        modal.close();
+    }
+}
+
+function createClearForm(form) {
+    return function() {
+        form.reset();
     }
 }
 
@@ -27,3 +33,6 @@ addProjectButton.addEventListener("click", createDisplayModal(newProjectModal));
 
 cancelTaskButton.addEventListener("click", createCloseModal(newTaskModal));
 cancelProjectButton.addEventListener("click", createCloseModal(newProjectModal));
+
+newTaskModal.addEventListener("close", createClearForm(newTaskForm));
+newProjectModal.addEventListener("close", createClearForm(newProjectForm));
