@@ -65,7 +65,7 @@ nav {
     display: grid;
     grid-template-rows: 0.25fr 0.75fr 2fr;
     gap: 10px;
-    height: 100vh;
+    height: calc(100vh - 30px);
 }
 
 .profile {
