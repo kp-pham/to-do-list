@@ -9,6 +9,9 @@ import "./models.js";
 const todoItems = [];
 const projects = [];
 
+const getTodoItem = () => todoItems.at(-1);
+const getProject = () => projects.at(-1);
+
 const content = document.getElementById("content");
 
 const newTaskForm = document.getElementById("new-task");
@@ -22,11 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
     todoItems.push(createTodoItem());
-    displayTask(todoItems.at(-1));
+    displayTask(getTodoItem());
 });
 
 newProjectForm.addEventListener("submit", event => {
     event.preventDefault();
     projects.push(createProject());
-    displayDirectory(projects.at(-1));
+    displayDirectory(getProject());
 });
