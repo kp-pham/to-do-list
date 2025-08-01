@@ -1,5 +1,5 @@
 import { createTodoItem, createProject } from "./modals.js";
-import displayTasks from "./tasks-view";
+import { displayTasks, displayTask } from "./tasks.js";
 import { displayDirectories, displayDirectory } from "./directories.js";
 import "./themes.js";
 import "./directories.js";
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
     todoItems.push(createTodoItem());
-    displayTasks(todoItems);
+    displayTask(todoItems.at(-1));
 });
 
 newProjectForm.addEventListener("submit", event => {

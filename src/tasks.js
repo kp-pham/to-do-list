@@ -1,7 +1,11 @@
 const content = document.getElementById("content");
 
 function displayTasks(todoItems) {
-    todoItems.forEach(todoItem => content.appendChild(createTask(todoItem)));
+    todoItems.forEach(todoItem => displayTask(todoItem));
+}
+
+function displayTask(todoItem) {
+    content.appendChild(createTask(todoItem));
 }
 
 function createTask(todoItem) {
@@ -39,4 +43,4 @@ function createDescription(description) {
     return taskDescription;
 }
 
-export default displayTasks;
+export { displayTasks, displayTask };
