@@ -1,5 +1,4 @@
-import Project from "./project";
-import TodoItem from "./todo-item";
+import { TodoItem, Project } from "./models.js";
 
 const addTaskButton = document.getElementById("add-task");
 const newTaskModal = document.getElementById("new-task");

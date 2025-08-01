@@ -3,6 +3,7 @@ import displayTasks from "./tasks-view";
 import "./themes.js";
 import "./project-menu.js";
 import "./styles.css";
+import "./models.js";
 
 const todoItems = [];
 const projects = [];
@@ -23,4 +24,3 @@ newProjectForm.addEventListener("submit", event => {
     projects.push(createProject());
     console.log(projects);
 });
-

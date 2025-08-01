@@ -5,6 +5,30 @@ class Entity {
     }
 }
 
+const hasTitle = {
+    changeTitle(title) {
+        this.title = title;
+    }
+};
+
+const hasDescription = {
+    changeDescription(description) {
+        this.description = description;
+    }
+};
+
+const hasDueDate = {
+    changeDueDate(dueDate) {
+        this.dueDate = dueDate;
+    }
+};
+
+const hasPriority = {
+    changePriority(priority) {
+        this.priority = priority;
+    }
+} 
+
 class TodoItem extends Entity {
     constructor(title, description, dueDate, priority) {
         super(title, description);
@@ -13,8 +37,18 @@ class TodoItem extends Entity {
     }
 }
 
+Object.assign(TodoItem.prototype, hasTitle);
+Object.assign(TodoItem.prototype, hasDescription);
+Object.assign(TodoItem.prototype, hasDueDate);
+Object.assign(TodoItem.prototype, hasPriority);
+
 class Project extends Entity {
     constructor(title, description) {
         super(title, description);
     }
 }
+
+Object.assign(Project.prototype, hasTitle);
+Object.assign(Project.prototype, hasDescription);
+
+export { TodoItem, Project };
