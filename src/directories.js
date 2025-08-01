@@ -3,7 +3,11 @@ const openedFolder = document.getElementById("folder-open");
 const closedFolder = document.getElementById("folder-closed");
 
 function displayDirectories(projects) {
-    projects.forEach(project => directories.appendChild(createDirectory(project)));
+    projects.forEach(project => displayDirectory(project));
+}
+
+function displayDirectory(project) {
+    directories.appendChild(createDirectory(project));
 }
 
 function createDirectory(project) {
@@ -52,4 +56,4 @@ directories.addEventListener("click", event => {
     }
 });
 
-export default displayDirectories;
+export { displayDirectories, displayDirectory };

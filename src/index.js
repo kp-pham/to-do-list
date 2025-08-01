@@ -1,6 +1,6 @@
 import { createTodoItem, createProject } from "./modals.js";
 import displayTasks from "./tasks-view";
-import displayDirectories from "./directories.js";
+import { displayDirectories, displayDirectory } from "./directories.js";
 import "./themes.js";
 import "./directories.js";
 import "./styles.css";
@@ -14,6 +14,11 @@ const content = document.getElementById("content");
 const newTaskForm = document.getElementById("new-task");
 const newProjectForm = document.getElementById("new-project");
 
+document.addEventListener("DOMContentLoaded", () => {
+    displayTasks(todoItems);
+    displayDirectories(projects);
+});
+
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
     todoItems.push(createTodoItem());
@@ -23,5 +28,5 @@ newTaskForm.addEventListener("submit", event => {
 newProjectForm.addEventListener("submit", event => {
     event.preventDefault();
     projects.push(createProject());
-    displayDirectories(projects);
+    displayDirectory(projects.at(-1));
 });
