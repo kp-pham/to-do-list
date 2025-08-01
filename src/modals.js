@@ -1,3 +1,6 @@
+import Project from "./project";
+import TodoItem from "./todo-item";
+
 const addTaskButton = document.getElementById("add-task");
 const newTaskModal = document.getElementById("new-task");
 const newTaskForm = newTaskModal.firstElementChild;
@@ -28,6 +31,22 @@ function createClearForm(form) {
     }
 }
 
+function createTodoItem() {
+    return new TodoItem(getTaskName(), getDueDate(), getTaskDescription(), getPriority());
+}
+
+const getTaskName = () => document.getElementById("task-name").value;
+const getDueDate = () => document.getElementById("due-date").value;
+const getTaskDescription = () => document.getElementById("task-description").value;
+const getPriority = () => document.querySelector("input[name='priority']:checked").value;
+
+function createProject() {
+    return new Project(getProjectName(), getProjectDescription());
+}
+
+const getProjectName = () => document.getElementById("project-name").value;
+const getProjectDescription = () => document.getElementById("project-description").value;
+
 addTaskButton.addEventListener("click", createDisplayModal(newTaskModal));
 addProjectButton.addEventListener("click", createDisplayModal(newProjectModal));
 
@@ -39,3 +58,5 @@ newProjectModal.addEventListener("close", createClearForm(newProjectForm));
 
 newTaskForm.addEventListener("submit", createCloseModal(newTaskModal));
 newProjectForm.addEventListener("submit", createCloseModal(newProjectModal));
+
+export { createTodoItem, createProject };

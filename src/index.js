@@ -1,7 +1,5 @@
-import TodoItem from "./todo-item.js";
-import Project from "./project.js";
+import { createTodoItem, createProject } from "./modals.js";
 import "./themes.js";
-import "./modals.js";
 import "./project-menu.js";
 import "./styles.css";
 
@@ -15,20 +13,12 @@ const newProjectForm = document.getElementById("new-project");
 
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
-    const taskName = document.getElementById("task-name").value;
-    const dueDate = document.getElementById("due-date").value;
-    const description = document.getElementById("task-description").value;
-    const priority = document.querySelector("input[name='priority']:checked").value;
-
-    todoItems.push(new TodoItem(taskName, dueDate, description, priority));
+    todoItems.push(createTodoItem());
     console.log(todoItems);
 });
 
 newProjectForm.addEventListener("submit", event => {
     event.preventDefault();
-    const projectName = document.getElementById("project-name").value;
-    const description = document.getElementById("project-description").value;
-    
-    projects.push(new Project(projectName, description));
+    projects.push(createProject());
     console.log(projects);
 });
