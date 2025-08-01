@@ -5,31 +5,30 @@ import "./modals.js";
 import "./project-menu.js";
 import "./styles.css";
 
+const todoItems = [];
+const projects = [];
+
 const content = document.getElementById("content");
-const project = new Project("My Project", "My latest project!");
 
-for (let i = 0; i < 6; ++i)
-    project.addTodoItem(new TodoItem(`Task ${i}`, "Description", "9/1/2025", i));
+const newTaskForm = document.getElementById("new-task");
+const newProjectForm = document.getElementById("new-project");
 
-project.todoItems.forEach(todoItem => {
-    const task = document.createElement("div");
+newTaskForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const taskName = document.getElementById("task-name").value;
+    const dueDate = document.getElementById("due-date").value;
+    const description = document.getElementById("task-description").value;
+    const priority = document.querySelector("input[name='priority']:checked").value;
 
-    const title = document.createElement("h2");
-    title.textContent = todoItem.title;
-    task.appendChild(title);
-
-    const description = document.createElement("p");
-    description.textContent = todoItem.description;
-    task.appendChild(description);
-
-    const dueDate = document.createElement("p");
-    dueDate.textContent = todoItem.dueDate;
-    task.appendChild(dueDate);
-
-    const priority = document.createElement("p");
-    priority.textContent = todoItem.priority;
-    task.appendChild(priority);
-
-    content.appendChild(task);
+    todoItems.push(new TodoItem(taskName, dueDate, description, priority));
+    console.log(todoItems);
 });
 
+newProjectForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const projectName = document.getElementById("project-name").value;
+    const description = document.getElementById("project-description").value;
+    
+    projects.push(new Project(projectName, description));
+    console.log(projects);
+});

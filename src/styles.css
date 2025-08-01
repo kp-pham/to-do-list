@@ -163,7 +163,7 @@ dialog > form {
 }
 
 dialog:first-child > form {
-    grid-template-rows: repeat(2, 1fr) 2fr 1fr;
+    grid-template-rows: repeat(2, 1fr) 3fr repeat(2, 1fr);
 }
 
 dialog:last-child > form {
@@ -192,6 +192,10 @@ section > textarea {
 
 section > textarea {
     flex-grow: 1;
+}
+
+section:nth-child(3) textarea {
+    aspect-ratio: 1 / 0.25;
 }
 
 section:last-child button {

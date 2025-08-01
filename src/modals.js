@@ -36,3 +36,6 @@ cancelProjectButton.addEventListener("click", createCloseModal(newProjectModal))
 
 newTaskModal.addEventListener("close", createClearForm(newTaskForm));
 newProjectModal.addEventListener("close", createClearForm(newProjectForm));
+
+newTaskForm.addEventListener("submit", createCloseModal(newTaskModal));
+newProjectForm.addEventListener("submit", createCloseModal(newProjectModal));
