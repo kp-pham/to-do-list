@@ -1,4 +1,5 @@
 import { createTodoItem, createProject } from "./modals.js";
+import displayTasks from "./tasks-view";
 import "./themes.js";
 import "./project-menu.js";
 import "./styles.css";
@@ -14,7 +15,7 @@ const newProjectForm = document.getElementById("new-project");
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
     todoItems.push(createTodoItem());
-    console.log(todoItems);
+    displayTasks(todoItems);
 });
 
 newProjectForm.addEventListener("submit", event => {
@@ -22,3 +23,4 @@ newProjectForm.addEventListener("submit", event => {
     projects.push(createProject());
     console.log(projects);
 });
+

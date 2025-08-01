@@ -11,8 +11,6 @@ const newProjectModal = document.getElementById("new-project");
 const newProjectForm = newProjectModal.firstElementChild;
 const cancelProjectButton = newProjectForm.lastElementChild.firstElementChild;
 
-const cancelButton = document.querySelector(".cancel-form");
-
 function createDisplayModal(modal) {
     return function() {
         modal.showModal();
