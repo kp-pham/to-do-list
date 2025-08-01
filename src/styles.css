@@ -116,6 +116,10 @@ nav > div:last-child > button.open > svg:first-child {
     display: none;
 }
 
+nav > div:last-child > button > p {
+    margin: 0;
+}
+
 nav button {
     display: flex;
     align-items: center;
