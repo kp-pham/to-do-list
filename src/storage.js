@@ -13,5 +13,21 @@ function storageAvailable(type) {
     }
 }
 
+function saveTodoItem(todoItem) {
+    const todoItems = JSON.parse(localStorage.getItem("todo-items"));
+    todoItems[todoItem.id] = todoItem;
+
+    localStorage.setItem("todo-items", todoItems);
+}
+
+function saveProject(project) {
+    const projects = JSON.parse(localStorage.getItem("projects"));
+    projects[project.id] = project;
+
+    localStorage.setItem("projects", projects);
+}
+
 localStorage.setItem("projects", JSON.stringify({}));
 localStorage.setItem("todo-items", JSON.stringify({}));
+
+export { saveTodoItem, saveProject };

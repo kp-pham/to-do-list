@@ -1,7 +1,7 @@
 import { createTodoItem, createProject } from "./modals.js";
 import { displayTasks, displayTask } from "./tasks.js";
 import { displayDirectories, displayDirectory } from "./directories.js";
-import "./storage.js";
+import { saveTodoItem, saveProject } from "./storage.js";
 import "./themes.js";
 import "./directories.js";
 import "./styles.css";
