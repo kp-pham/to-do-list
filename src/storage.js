@@ -13,4 +13,6 @@ function storageAvailable(type) {
     }
 }
 
-console.log(storageAvailable("localStorage"));
+function saveToLocalStorage() {
+    localStorage.setItem()
+}
