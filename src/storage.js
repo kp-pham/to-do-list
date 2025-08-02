@@ -13,6 +13,5 @@ function storageAvailable(type) {
     }
 }
 
-function saveToLocalStorage() {
-    localStorage.setItem()
-}
+localStorage.setItem("projects", JSON.stringify({}));
+localStorage.setItem("todo-items", JSON.stringify({}));
