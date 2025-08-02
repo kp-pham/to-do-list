@@ -6,9 +6,32 @@ import "./themes.js";
 import "./directories.js";
 import "./styles.css";
 import "./models.js";
+import { TodoItem } from "./models.js";
 
 const todoItems = [];
 const projects = [];
+
+class DisplayController {
+    constructor() {
+        this.todoItems = {};
+        this.projects = {};
+    }
+
+    processTodoItems() {
+        for (const [id, data] of Object.entries(loadTodoItems()))
+            todoItems[id] = new TodoItem(...data);
+    }
+
+    processProjects() {
+        for (const [id, data] of Object.entries(loadProjects()))
+            projects[id] = new TodoItem(...data);
+    }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    displayTasks(todoItems);
+    displayDirectories(projects);
+});
 
 const getTodoItem = () => todoItems.at(-1);
 const getProject = () => projects.at(-1);
@@ -18,10 +41,7 @@ const content = document.getElementById("content");
 const newTaskForm = document.getElementById("new-task");
 const newProjectForm = document.getElementById("new-project");
 
-document.addEventListener("DOMContentLoaded", () => {
-    displayTasks(todoItems);
-    displayDirectories(projects);
-});
+
 
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
@@ -34,3 +54,7 @@ newProjectForm.addEventListener("submit", event => {
     projects.push(createProject());
     displayDirectory(getProject());
 });
+
+const app = new DisplayController();
+app.processTodoItems();
+app.processProjects();
