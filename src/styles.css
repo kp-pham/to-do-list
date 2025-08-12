@@ -8,6 +8,8 @@
     --color-field-border: #000000;
     --color-base-text: #000000;
     --color-base-bg: #FFFFFF;
+    --color-task-high-priority: #F67475;
+    --color-task-medium-priority: #EDA21C;
 }
 
 :root.dark {
@@ -20,6 +22,8 @@
     --color-field-border: #FFFFFF;
     --color-base-text: #FFFFFF;
     --color-base-bg: #242329;
+    --color-task-high-priority: #822A2C;
+    --color-task-medium-priority: #9C641D;
 }
 
 body {
@@ -143,11 +147,35 @@ nav button > svg {
 #content {
     color: var(--color-base-text);
     background-color: var(--color-base-bg);
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .tasks {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+.task:not([data-priority = "low"]):is(:hover, :focus) {
+    filter: brightness(1.2);
+}
+
+.task[data-priority = "high"] {
+    background-color: var(--color-task-high-priority);
+}
+
+.task[data-priority = "medium"] {
+    background-color: var(--color-task-medium-priority);
 }
 
 dialog::backdrop {
