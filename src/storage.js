@@ -17,14 +17,14 @@ function saveTodoItem(todoItem) {
     const todoItems = loadTodoItems();
     todoItems[todoItem.id] = todoItem;
 
-    localStorage.setItem("todo-items", todoItems);
+    localStorage.setItem("todo-items", JSON.stringify(todoItems));
 }
 
 function saveProject(project) {
     const projects = loadProjects();
     projects[project.id] = project;
 
-    localStorage.setItem("projects", projects);
+    localStorage.setItem("projects", JSON.stringify(projects));
 }
 
 function loadTodoItems() {
@@ -35,7 +35,14 @@ function loadProjects() {
     return JSON.parse(localStorage.getItem("projects"));
 }
 
-localStorage.setItem("projects", JSON.stringify({}));
-localStorage.setItem("todo-items", JSON.stringify({}));
+function createStorage() {
+    if (localStorage.getItem("projects") === null) 
+        localStorage.setItem("projects", JSON.stringify({}));
+
+    if (localStorage.getItem("todo-items") === null)
+        localStorage.setItem("todo-items", JSON.stringify({}));
+}
+
+document.addEventListener('DOMContentLoaded', createStorage);
 
 export { saveTodoItem, saveProject, loadTodoItems, loadProjects };

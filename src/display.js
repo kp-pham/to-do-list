@@ -13,14 +13,14 @@ class DisplayController {
 const processesTodoItems = {
     processTodoItems() {
         for (const [id, data] of Object.entries(loadTodoItems()))
-            this.todoItems[id] = new TodoItem(...data);
+            this.todoItems[id] = TodoItem.fromData(data);
     }
 };
 
 const processesProjects = {
     processProjects() {
         for (const [id, data] of Object.entries(loadProjects()))
-            this.projects[id] = new Project(...data);
+            this.projects[id] = Project.fromData(data);
     }
 };
 
@@ -54,7 +54,7 @@ const displaysProjects = {
     },
 
     displayProject() {
-        displayTask(Object.values(this.projects).at(-1));
+        displayDirectory(Object.values(this.projects).at(-1));
     }
 };
 

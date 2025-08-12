@@ -36,6 +36,10 @@ class TodoItem extends Entity {
         this.dueDate = dueDate;
         this.priority = priority;
     }
+
+    static fromData({ title, description, dueDate, priority }) {
+        return new TodoItem(title, description, dueDate, priority);
+    } 
 }
 
 Object.assign(TodoItem.prototype, hasTitle);
@@ -46,6 +50,10 @@ Object.assign(TodoItem.prototype, hasPriority);
 class Project extends Entity {
     constructor(title, description) {
         super(title, description);
+    }
+
+    static fromData({ title, description }) {
+        return new Project(title, description);
     }
 }
 
