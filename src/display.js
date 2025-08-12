@@ -1,5 +1,7 @@
 import { TodoItem, Project } from "./models.js";
 import { loadTodoItems, loadProjects } from "./storage.js";
+import { displayTasks, displayTask } from "./tasks.js";
+import { displayDirectories, displayDirectory } from "./directories.js";
 
 class DisplayController {
     constructor() {
@@ -22,7 +24,21 @@ const processesProjects = {
     }
 };
 
+const displaysTodoItems = {    
+    displayTodoItems() {
+        displayTasks(this.todoItems);
+    }
+};
+
+const displaysProjects = {
+    displayProjects() {
+        displayDirectories(this.projects);
+    }
+};
+
 Object.assign(DisplayController.prototype, processesTodoItems);
 Object.assign(DisplayController.prototype, processesProjects);
+Object.assign(DisplayController.prototype, displaysTodoItems);
+Object.assign(DisplayController.prototype, displaysProjects);
 
 export default DisplayController;

@@ -1,7 +1,6 @@
 import { createTodoItem, createProject } from "./modals.js";
-import { displayTasks, displayTask } from "./tasks.js";
-import { displayDirectories, displayDirectory } from "./directories.js";
 import { saveTodoItem, saveProject } from "./storage.js";
+import DisplayController from "./display.js";
 import "./themes.js";
 import "./directories.js";
 import "./styles.css";
@@ -31,7 +30,3 @@ newProjectForm.addEventListener("submit", event => {
     projects.push(createProject());
     displayDirectory(getProject());
 });
-
-const app = new DisplayController();
-app.processTodoItems();
-app.processProjects();
