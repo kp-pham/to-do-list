@@ -141,10 +141,13 @@ nav button > svg {
 }
 
 #content {
-    display: grid;
-    grid-auto-columns: 1fr;
     color: var(--color-base-text);
     background-color: var(--color-base-bg);
+}
+
+.tasks {
+    display: flex;
+    justify-content: center;
 }
 
 dialog::backdrop {

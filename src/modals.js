@@ -29,7 +29,7 @@ function createClearForm(form) {
 }
 
 function createTodoItem() {
-    return new TodoItem(getTaskName(), getDueDate(), getTaskDescription(), getPriority());
+    return new TodoItem(getTaskName(), getTaskDescription(), getDueDate(), getPriority());
 }
 
 const getTaskName = () => document.getElementById("task-name").value;
