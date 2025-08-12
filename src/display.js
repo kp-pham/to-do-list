@@ -26,27 +26,35 @@ const processesProjects = {
 
 const storesTodoItems = {
     storeTodoItem(todoItem) {
-        this.todoItems[id] = todoItem;
+        this.todoItems[todoItem.id] = todoItem;
         saveTodoItem(todoItem);
     }
 };
 
 const storesProjects = {
     storeProject(project) {
-        this.projects[id] = project;
+        this.projects[project.id] = project;
         saveProject(project);
     }
 }
 
 const displaysTodoItems = {    
     displayTodoItems() {
-        displayTasks(this.todoItems);
+        displayTasks(Object.values(this.todoItems));
+    },
+
+    displayTodoItem() {
+        displayTask(Object.values(this.todoItems).at(-1));
     }
 };
 
 const displaysProjects = {
     displayProjects() {
-        displayDirectories(this.projects);
+        displayDirectories(Object.values(this.projects));
+    },
+
+    displayProject() {
+        displayTask(Object.values(this.projects).at(-1));
     }
 };
 

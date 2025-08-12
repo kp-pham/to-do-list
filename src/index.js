@@ -5,11 +5,14 @@ import "./directories.js";
 import "./styles.css";
 import "./models.js";
 
-const app = DisplayController();
+const app = new DisplayController();
 
 document.addEventListener("DOMContentLoaded", () => {
-    displayTasks(todoItems);
-    displayDirectories(projects);
+    app.processTodoItems();
+    app.processProjects();
+
+    app.displayTodoItems();
+    app.displayProjects();
 });
 
 const newTaskForm = document.getElementById("new-task");
@@ -17,12 +20,12 @@ const newProjectForm = document.getElementById("new-project");
 
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
-    todoItems.push(createTodoItem());
-    displayTask(getTodoItem());
+    app.storeTodoItem(createTodoItem());
+    app.displayTodoItem();
 });
 
 newProjectForm.addEventListener("submit", event => {
     event.preventDefault();
-    projects.push(createProject());
-    displayDirectory(getProject());
+    app.storeProject(createProject());
+    app.displayProject();
 });
