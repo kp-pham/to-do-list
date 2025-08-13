@@ -1,6 +1,10 @@
 const content = document.getElementById("content");
 
 function displayTasks(todoItems) {
+    content.textContent = "";
+    content.classList.remove(...content.classList);
+    content.classList.add("tasks");
+
     todoItems.forEach(todoItem => displayTask(todoItem));
 }
 
@@ -9,6 +13,10 @@ function displayTask(todoItem) {
 }
 
 function displayTaskView(todoItem) {
+    content.textContent = "";
+    content.classList.remove(...content.classList);
+    content.classList.add("task-expand");
+
     content.appendChild(createTaskView(todoItem));
 }
 

@@ -22,7 +22,6 @@ const todoItemExpanded = target => target.tagName === "BUTTON";
 content.addEventListener("click", event => {
     if (todoItemExpanded(event.target))
         app.expandTodoItem(app.todoItems[event.target.dataset.id]);
-
 });
 
 newTaskForm.addEventListener("submit", event => {
