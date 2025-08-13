@@ -1,5 +1,5 @@
 import { TodoItem, Project } from "./models.js";
-import { saveTodoItem, saveProject, loadTodoItems, loadProjects } from "./storage/storage.js";
+import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem } from "./storage/storage.js";
 import { displayTasks, displayTask, displayTaskView } from "./tasks.js";
 import { displayDirectories, displayDirectory } from "./directories.js";
 
@@ -38,6 +38,13 @@ const storesProjects = {
     }
 }
 
+const removesTodoItems = {
+    removeTodoItem(id) {
+        delete this.todoItems[id];
+        deleteTodoItem(id);
+    }
+}
+
 const displaysTodoItems = {    
     displayTodoItems() {
         displayTasks(Object.values(this.todoItems));
@@ -64,9 +71,10 @@ const displaysProjects = {
 
 Object.assign(DisplayController.prototype, processesTodoItems);
 Object.assign(DisplayController.prototype, processesProjects);
-Object.assign(DisplayController.prototype, displaysTodoItems);
-Object.assign(DisplayController.prototype, displaysProjects);
 Object.assign(DisplayController.prototype, storesTodoItems);
 Object.assign(DisplayController.prototype, storesProjects);
+Object.assign(DisplayController.prototype, removesTodoItems);
+Object.assign(DisplayController.prototype, displaysTodoItems);
+Object.assign(DisplayController.prototype, displaysProjects);
 
 export default DisplayController;

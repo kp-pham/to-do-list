@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const content = document.getElementById("content");
 const newTaskForm = document.getElementById("new-task");
 const newProjectForm = document.getElementById("new-project");
+const confirmDeleteForm = document.getElementById("confirm-delete");
 
 const todoItemExpanded = target => target.classList.contains("task") || target.parentElement.classList.contains("task");
 
@@ -39,6 +40,11 @@ newProjectForm.addEventListener("submit", event => {
     event.preventDefault();
     app.storeProject(createProject());
     app.displayProject();
+});
+
+confirmDeleteForm.addEventListener("submit", event => {
+    const id = document.querySelector(".task-view").dataset.id;
+    app.removeTodoItem(id);
 });
 
 document.getElementById("view-tasks").addEventListener("click", () => {
