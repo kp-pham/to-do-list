@@ -12,6 +12,7 @@ function createTask(todoItem) {
     const task = document.createElement("button");
     task.classList.add("task");
     task.dataset.priority = todoItem.priority;
+    task.dataset.id = todoItem.id;
 
     task.appendChild(createTitle(todoItem.title));
     task.appendChild(createDueDate(todoItem.dueDate));
