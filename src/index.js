@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
     app.displayProjects();
 });
 
+const addTaskButton = document.getElementById("add-task");
+const projectsDropdown = document.querySelector("select");
+
 const content = document.getElementById("content");
 const newTaskForm = document.getElementById("new-task");
 const newProjectForm = document.getElementById("new-project");
@@ -30,6 +33,19 @@ content.addEventListener("click", event => {
     }
 });
 
+function createOption(project) {
+    const option = document.createElement("option");
+    option.textContent = project.title;
+    option.value = project.title;
+
+    return option;
+}
+
+addTaskButton.addEventListener("click", () => {
+    projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
+    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
+});
+
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
     app.storeTodoItem(createTodoItem());
@@ -42,7 +58,7 @@ newProjectForm.addEventListener("submit", event => {
     app.displayProject();
 });
 
-confirmDeleteForm.addEventListener("submit", event => {
+confirmDeleteForm.addEventListener("submit", () => {
     const id = document.querySelector(".task-view").dataset.id;
     app.removeTodoItem(id);
 });
