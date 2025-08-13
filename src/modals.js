@@ -10,6 +10,11 @@ const newProjectModal = document.getElementById("new-project");
 const newProjectForm = newProjectModal.firstElementChild;
 const cancelProjectButton = newProjectForm.lastElementChild.firstElementChild;
 
+const deleteButton = document.getElementById("delete");
+const confirmDeleteModal = document.getElementById("confirm-delete");
+const confirmDeleteForm = confirmDeleteModal.firstElementChild;
+const cancelDeleteButton = confirmDeleteForm.lastElementChild.firstElementChild;
+
 function createDisplayModal(modal) {
     return function() {
         modal.showModal();
@@ -49,11 +54,14 @@ addProjectButton.addEventListener("click", createDisplayModal(newProjectModal));
 
 cancelTaskButton.addEventListener("click", createCloseModal(newTaskModal));
 cancelProjectButton.addEventListener("click", createCloseModal(newProjectModal));
+cancelDeleteButton.addEventListener("click", createClearForm(confirmDeleteModal));
 
 newTaskModal.addEventListener("close", createClearForm(newTaskForm));
 newProjectModal.addEventListener("close", createClearForm(newProjectForm));
+confirmDeleteModal.addEventListener("close", createClearForm(confirmDeleteModal));
 
 newTaskForm.addEventListener("submit", createCloseModal(newTaskModal));
 newProjectForm.addEventListener("submit", createCloseModal(newProjectModal));
+confirmDeleteForm.addEventListener("submit", createCloseModal(confirmDeleteModal));
 
 export { createTodoItem, createProject };
