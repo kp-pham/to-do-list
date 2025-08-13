@@ -316,3 +316,15 @@ section:last-child button:first-child {
 section:last-child button:last-child {
     background-color: #C57C06;
 }
+
+select {
+    appearance: base-select;
+}
+
+select::picker(select) {
+    appearance: base-select;
+    border-radius: 5px;
+    color: var(--color-base-text);
+    background-color: var(--color-base-bg);
+    top: calc(anchor(bottom));
+}
