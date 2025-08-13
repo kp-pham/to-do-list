@@ -104,9 +104,14 @@ function createTitle(title) {
 function createDueDate(dueDate) {
     const taskDueDate = document.createElement("h2");
     taskDueDate.classList.add("due-date");
-    taskDueDate.textContent = dueDate;
+    taskDueDate.textContent = formatDueDate(dueDate);
 
     return taskDueDate;
+}
+
+function formatDueDate(dueDate) {
+    const [year, month, day] = dueDate.split("-");
+    return `${month}-${day}-${year}`;
 }
 
 function createDescription(description) {

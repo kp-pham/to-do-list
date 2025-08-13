@@ -23,7 +23,7 @@ function createTodoItem() {
 }
 
 const getTaskName = () => document.getElementById("task-name").value;
-const getDueDate = () => document.getElementById("due-date").value;
+const getDueDate = () =>  document.getElementById("due-date").value;
 const getTaskDescription = () => document.getElementById("task-description").value;
 const getPriority = () => document.querySelector("input[name='priority']:checked").value;
 
