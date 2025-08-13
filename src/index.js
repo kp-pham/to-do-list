@@ -13,8 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
     app.displayProjects();
 });
 
+const content = document.getElementById("content");
 const newTaskForm = document.getElementById("new-task");
 const newProjectForm = document.getElementById("new-project");
+
+const todoItemExpanded = target => target.tagName === "BUTTON";
+
+content.addEventListener("click", event => {
+    if (todoItemExpanded(event.target))
+        app.expandTodoItem(app.todoItems[event.target.dataset.id]);
+
+});
 
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();

@@ -1,6 +1,6 @@
 import { TodoItem, Project } from "./models.js";
 import { saveTodoItem, saveProject, loadTodoItems, loadProjects } from "./storage.js";
-import { displayTasks, displayTask } from "./tasks.js";
+import { displayTasks, displayTask, displayTaskView } from "./tasks.js";
 import { displayDirectories, displayDirectory } from "./directories.js";
 
 class DisplayController {
@@ -45,6 +45,10 @@ const displaysTodoItems = {
 
     displayTodoItem() {
         displayTask(Object.values(this.todoItems).at(-1));
+    },
+
+    expandTodoItem(todoItem) {
+        displayTaskView(todoItem);
     }
 };
 

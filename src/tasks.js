@@ -8,6 +8,10 @@ function displayTask(todoItem) {
     content.appendChild(createTask(todoItem));
 }
 
+function displayTaskView(todoItem) {
+    content.appendChild(createTaskView(todoItem));
+}
+
 function createTask(todoItem) {
     const task = document.createElement("button");
     task.classList.add("task");
@@ -18,6 +22,19 @@ function createTask(todoItem) {
     task.appendChild(createDueDate(todoItem.dueDate));
 
     return task;
+}
+
+function createTaskView(todoItem) {
+    const taskView = document.createElement("div");
+    taskView.classList.add("task-view");
+    taskView.dataset.priority = todoItem.priority;
+    taskView.dataset.id = todoItem.id;
+
+    taskView.appendChild(createTitle(todoItem.title));
+    taskView.appendChild(createDueDate(todoItem.dueDate));
+    taskView.appendChild(createDescription(todoItem.description));
+
+    return taskView;
 }
 
 function createTitle(title) {
@@ -44,4 +61,4 @@ function createDescription(description) {
     return taskDescription;
 }
 
-export { displayTasks, displayTask };
+export { displayTasks, displayTask, displayTaskView };

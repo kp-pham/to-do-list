@@ -37,8 +37,11 @@ class TodoItem extends Entity {
         this.priority = priority;
     }
 
-    static fromData({ title, description, dueDate, priority }) {
-        return new TodoItem(title, description, dueDate, priority);
+    static fromData({ title, description, dueDate, priority, id }) {
+        const todoItem = new TodoItem(title, description, dueDate, priority);
+        todoItem.id = id;
+
+        return todoItem;
     } 
 }
 
