@@ -22,6 +22,8 @@ const todoItemExpanded = target => target.tagName === "BUTTON" || target.parentE
 
 content.addEventListener("click", event => {
     if (todoItemExpanded(event.target)) {
+        document.querySelector(".open").classList.remove("open");
+
         const todoItem = event.target.classList.contains("task") ? event.target : event.target.parentElement;
         app.expandTodoItem(app.todoItems[todoItem.dataset.id]);
     }

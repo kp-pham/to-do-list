@@ -6,7 +6,9 @@ const selectedProject = target => target.parentElement.classList.contains("proje
 
 function updateSidebar(target) {
     const opened = document.querySelector(".open");
-    opened.classList.remove(...opened.classList);
+
+    if (opened !== null)
+        opened.classList.remove(...opened.classList);
 
     target.classList.add("open");
 }
