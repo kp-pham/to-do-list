@@ -1,5 +1,5 @@
 import { TodoItem, Project } from "./models.js";
-import { saveTodoItem, saveProject, loadTodoItems, loadProjects } from "./storage.js";
+import { saveTodoItem, saveProject, loadTodoItems, loadProjects } from "./storage/storage.js";
 import { displayTasks, displayTask, displayTaskView } from "./tasks.js";
 import { displayDirectories, displayDirectory } from "./directories.js";
 
