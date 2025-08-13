@@ -38,11 +38,20 @@ function createTaskView(todoItem) {
     taskView.dataset.priority = todoItem.priority;
     taskView.dataset.id = todoItem.id;
 
-    taskView.appendChild(createTitle(todoItem.title));
-    taskView.appendChild(createDueDate(todoItem.dueDate));
+    taskView.appendChild(createHeader(todoItem));
     taskView.appendChild(createDescription(todoItem.description));
 
     return taskView;
+}
+
+function createHeader(todoItem) {
+    const header = document.createElement("div");
+    header.classList.add("header");
+
+    header.appendChild(createTitle(todoItem.title));
+    header.appendChild(createDueDate(todoItem.dueDate));
+
+    return header;
 }
 
 function createTitle(title) {

@@ -10,6 +10,7 @@
     --color-base-bg: hsl(0, 0%, 100%);
     --color-task-high-priority: hsl(360, 88%, 71%);
     --color-task-medium-priority: hsl(38, 85%, 52%);
+    --color-task-low-priority: hsl(40, 27%, 98%);
 }
 
 :root.dark {
@@ -24,11 +25,13 @@
     --color-base-bg: hsl(250, 8%, 15%);
     --color-task-high-priority: hsl(359, 51%, 34%);
     --color-task-medium-priority: hsl(33, 69%, 36%);
+    --color-task-low-priority: hsl(240, 9%, 18%);
 }
 
 body {
     margin: 0;
     padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 button {
@@ -182,6 +185,49 @@ nav button > svg {
 
 .task:not([data-priority = "low"]):is(:hover, :focus-visible) {
     filter: brightness(1.2);
+}
+
+.task-view {
+    border-radius: 10px;
+}
+
+.task-view[data-priority = "high"] {
+    background-color: var(--color-task-high-priority);
+}
+
+.task-view[data-priority = "medium"] {
+    background-color: var(--color-task-medium-priority);
+}
+
+.task-view[data-priority = "low"] {
+    background-color: var(--color-task-low-priority);
+}
+
+.task-view > .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+.task-view > .description {
+    padding: 10px;
+}
+
+.task-view[data-priority = "high"] > .header {
+    background-color: var(--color-task-high-priority);
+    filter: brightness(1.2);
+}
+
+.task-view[data-priority = "medium"] > .header {
+    background-color: var(--color-task-medium-priority);
+    filter: brightness(1.2);
+}
+
+.task-view[data-priority = "low"] > .header {
+    background-color: var(--color-button-hover);
 }
 
 dialog::backdrop {
