@@ -36,7 +36,7 @@ button {
     background-color: var(--color-sidebar-bg);
 }
 
-button:hover, button:focus {
+button:hover, button:focus-visible {
     background-color: var(--color-button-hover);
     cursor: pointer;
 }
@@ -45,7 +45,7 @@ button.open {
     background-color: var(--color-project-open);
 }
 
-button:hover.open, button:focus.open {
+button:hover.open, button:focus-visible.open {
     background-color: var(--color-project-open-hover);
 }
 
@@ -172,7 +172,7 @@ nav button > svg {
     border-radius: 10px;
 }
 
-.task:not([data-priority = "low"]):is(:hover, :focus) {
+.task:not([data-priority = "low"]):is(:hover, :focus-visible) {
     filter: brightness(1.2);
 }
 
