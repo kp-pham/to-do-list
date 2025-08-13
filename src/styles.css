@@ -3,7 +3,7 @@
     --color-button-hover: #F5F4FA;
     --color-project-open: #F5F4FA;
     --color-project-open-hover: #DBDBDB;
-    --color-sidebar-bg: #FBFAF8; 
+    --color-sidebar-bg: #FBFAF8;
     --color-field-bg: #F5F4FA;
     --color-field-border: #000000;
     --color-base-text: #000000;
@@ -149,6 +149,12 @@ nav button > svg {
     background-color: var(--color-base-bg);
     padding: 20px;
     overflow-y: auto;
+    height: calc(100vh - 40px);
+    scrollbar-color: #8B8B8B transparent;
+}
+
+#content::-webkit-scrollbar {
+    background: transparent;
 }
 
 .tasks {
