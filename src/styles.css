@@ -1,29 +1,29 @@
 :root.light {
-    --color-icon-fill: #000000;
-    --color-button-hover: #F5F4FA;
-    --color-project-open: #F5F4FA;
-    --color-project-open-hover: #DBDBDB;
-    --color-sidebar-bg: #FBFAF8;
-    --color-field-bg: #F5F4FA;
-    --color-field-border: #000000;
-    --color-base-text: #000000;
-    --color-base-bg: #FFFFFF;
-    --color-task-high-priority: #F67475;
-    --color-task-medium-priority: #EDA21C;
+    --color-icon-fill: hsl(0, 0%, 0%);
+    --color-button-hover: hsl(250, 37%, 97%);
+    --color-project-open: hsl(250, 37%, 97%);
+    --color-project-open-hover: hsl(0, 0%, 86%);
+    --color-sidebar-bg: hsl(40, 27%, 98%);
+    --color-field-bg: hsl(250, 37%, 97%);
+    --color-field-border: hsl(0, 0%, 0%);
+    --color-base-text: hsl(0, 0%, 0%);
+    --color-base-bg: hsl(0, 0%, 100%);
+    --color-task-high-priority: hsl(360, 88%, 71%);
+    --color-task-medium-priority: hsl(38, 85%, 52%);
 }
 
 :root.dark {
-    --color-icon-fill: #FFFFFF;
-    --color-button-hover: #34343C;
-    --color-project-open: #34343C;
-    --color-project-open-hover: #393939;
-    --color-sidebar-bg: #2B2B33;
-    --color-field-bg: #FFFFFF;
-    --color-field-border: #FFFFFF;
-    --color-base-text: #FFFFFF;
-    --color-base-bg: #242329;
-    --color-task-high-priority: #822A2C;
-    --color-task-medium-priority: #9C641D;
+    --color-icon-fill: hsl(0, 0%, 100%);
+    --color-button-hover: hsl(240, 7%, 22%);
+    --color-project-open: hsl(240, 7%, 22%);
+    --color-project-open-hover: hsl(0, 0%, 22%);
+    --color-sidebar-bg: hsl(240, 9%, 18%);
+    --color-field-bg: hsl(0, 0%, 100%);
+    --color-field-border: hsl(0, 0%, 100%);
+    --color-base-text: hsl(0, 0%, 100%);
+    --color-base-bg: hsl(250, 8%, 15%);
+    --color-task-high-priority: hsl(359, 51%, 34%);
+    --color-task-medium-priority: hsl(33, 69%, 36%);
 }
 
 body {
