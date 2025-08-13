@@ -213,6 +213,7 @@ nav button > svg {
 }
 
 .task-view > .description {
+    margin: 0;
     padding: 10px;
 }
 
@@ -228,6 +229,22 @@ nav button > svg {
 
 .task-view[data-priority = "low"] > .header {
     background-color: var(--color-button-hover);
+}
+
+.task-view .buttons {
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+
+.task-view button {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+.task-view svg {
+    width: 25px;
 }
 
 dialog::backdrop {

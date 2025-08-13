@@ -1,4 +1,6 @@
 const content = document.getElementById("content");
+const editTask = document.getElementById("edit-task");
+const deleteTask = document.getElementById("delete-task");
 
 function displayTasks(todoItems) {
     content.textContent = "";
@@ -39,6 +41,7 @@ function createTaskView(todoItem) {
     taskView.dataset.id = todoItem.id;
 
     taskView.appendChild(createHeader(todoItem));
+    taskView.appendChild(createButtons());
     taskView.appendChild(createDescription(todoItem.description));
 
     return taskView;
@@ -52,6 +55,42 @@ function createHeader(todoItem) {
     header.appendChild(createDueDate(todoItem.dueDate));
 
     return header;
+}
+
+function createButtons() {
+    const buttons = document.createElement("div");
+    buttons.classList.add("buttons");
+
+    buttons.appendChild(createEditButton());
+    buttons.appendChild(createDeleteButton());
+
+    return buttons;
+}
+
+function createEditButton() {
+    const button = document.createElement("button");
+    button.id = "edit"
+    button.appendChild(createTaskIcon(editTask));
+
+    return button;
+}
+
+function createDeleteButton() {
+    const button = document.createElement("button");
+    button.id = "delete";
+    button.appendChild(createTaskIcon(deleteTask));
+
+    return button;
+}
+
+function createTaskIcon(template) {
+    return createGetIconFromTemplate(template)();
+}
+
+function createGetIconFromTemplate(template) {
+    return function() {
+        return template.content.firstElementChild.cloneNode(true);
+    }
 }
 
 function createTitle(title) {
