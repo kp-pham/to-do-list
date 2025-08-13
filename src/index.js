@@ -18,7 +18,7 @@ const content = document.getElementById("content");
 const newTaskForm = document.getElementById("new-task");
 const newProjectForm = document.getElementById("new-project");
 
-const todoItemExpanded = target => target.tagName === "BUTTON" || target.parentElement.classList.contains("task");
+const todoItemExpanded = target => target.classList.contains("task") || target.parentElement.classList.contains("task");
 
 content.addEventListener("click", event => {
     if (todoItemExpanded(event.target)) {
