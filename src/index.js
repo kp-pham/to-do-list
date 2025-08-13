@@ -37,6 +37,7 @@ function createOption(project) {
     const option = document.createElement("option");
     option.textContent = project.title;
     option.value = project.title;
+    option.dataset.projectId = project.id;
 
     return option;
 }
@@ -61,6 +62,9 @@ newProjectForm.addEventListener("submit", event => {
 confirmDeleteForm.addEventListener("submit", () => {
     const id = document.querySelector(".task-view").dataset.id;
     app.removeTodoItem(id);
+    
+    app.displayTodoItems();
+    document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
 });
 
 document.getElementById("view-tasks").addEventListener("click", () => {
