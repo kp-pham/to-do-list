@@ -1,0 +1,37 @@
+import { TodoItem, Project } from "../models.js"
+
+function createDisplayModal(modal) {
+    return function() {
+        modal.showModal();
+    }
+}
+
+function createCloseModal(modal) {
+    return function() {
+        modal.close();
+    }
+}
+
+function createClearForm(form) {
+    return function() {
+        form.reset();
+    }
+}
+
+function createTodoItem() {
+    return new TodoItem(getTaskName(), getTaskDescription(), getDueDate(), getPriority());
+}
+
+const getTaskName = () => document.getElementById("task-name").value;
+const getDueDate = () => document.getElementById("due-date").value;
+const getTaskDescription = () => document.getElementById("task-description").value;
+const getPriority = () => document.querySelector("input[name='priority']:checked").value;
+
+function createProject() {
+    return new Project(getProjectName(), getProjectDescription());
+}
+
+const getProjectName = () => document.getElementById("project-name").value;
+const getProjectDescription = () => document.getElementById("project-description").value;
+
+export { createDisplayModal, createCloseModal, createClearForm, createTodoItem, createProject };
