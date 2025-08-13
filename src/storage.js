@@ -35,6 +35,20 @@ function loadProjects() {
     return JSON.parse(localStorage.getItem("projects"));
 }
 
+function deleteTodoItem(todoItem) {
+    const todoItems = loadTodoItems();
+    delete todoItems[todoItem.id];
+
+    localStorage.setItem("todo-items", JSON.stringify(todoItems));
+}
+
+function deleteProject(project) {
+    const projects = loadProjects();
+    delete projects[project.id];
+
+    localStorage.setItem("projects", JSON.stringify(projects));
+}
+
 function createStorage() {
     if (localStorage.getItem("projects") === null) 
         localStorage.setItem("projects", JSON.stringify({}));
