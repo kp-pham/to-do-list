@@ -18,11 +18,13 @@ const content = document.getElementById("content");
 const newTaskForm = document.getElementById("new-task");
 const newProjectForm = document.getElementById("new-project");
 
-const todoItemExpanded = target => target.tagName === "BUTTON";
+const todoItemExpanded = target => target.tagName === "BUTTON" || target.parentElement.classList.contains("task");
 
 content.addEventListener("click", event => {
-    if (todoItemExpanded(event.target))
-        app.expandTodoItem(app.todoItems[event.target.dataset.id]);
+    if (todoItemExpanded(event.target)) {
+        const todoItem = event.target.classList.contains("task") ? event.target : event.target.parentElement;
+        app.expandTodoItem(app.todoItems[todoItem.dataset.id]);
+    }
 });
 
 newTaskForm.addEventListener("submit", event => {
@@ -35,4 +37,8 @@ newProjectForm.addEventListener("submit", event => {
     event.preventDefault();
     app.storeProject(createProject());
     app.displayProject();
+});
+
+document.getElementById("view-tasks").addEventListener("click", () => {
+    app.displayTodoItems();
 });

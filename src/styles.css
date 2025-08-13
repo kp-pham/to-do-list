@@ -172,16 +172,16 @@ nav button > svg {
     border-radius: 10px;
 }
 
-.task:not([data-priority = "low"]):is(:hover, :focus-visible) {
-    filter: brightness(1.2);
-}
-
 .task[data-priority = "high"] {
     background-color: var(--color-task-high-priority);
 }
 
 .task[data-priority = "medium"] {
     background-color: var(--color-task-medium-priority);
+}
+
+.task:not([data-priority = "low"]):is(:hover, :focus-visible) {
+    filter: brightness(1.2);
 }
 
 dialog::backdrop {
