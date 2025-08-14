@@ -160,7 +160,8 @@ nav button > svg {
     background: transparent;
 }
 
-.tasks {
+.tasks,
+.project-expand {
     display: flex;
     flex-direction: column;
     gap: 10px;

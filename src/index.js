@@ -18,6 +18,7 @@ const addTaskButton = document.getElementById("add-task");
 const projectsDropdown = document.querySelector("select");
 
 const content = document.getElementById("content");
+const projects = document.querySelector(".projects");
 const newTaskForm = document.getElementById("new-task");
 const newProjectForm = document.getElementById("new-project");
 const confirmDeleteForm = document.getElementById("confirm-delete");
@@ -65,6 +66,11 @@ confirmDeleteForm.addEventListener("submit", () => {
     
     app.displayTodoItems();
     document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+});
+
+projects.addEventListener("click", event => {
+    if (event.target.tagName === "BUTTON")
+        app.expandProject(event.target.dataset.id);
 });
 
 document.getElementById("view-tasks").addEventListener("click", () => {
