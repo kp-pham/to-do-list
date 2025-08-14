@@ -44,11 +44,6 @@ function createOption(project) {
     return option;
 }
 
-addTaskButton.addEventListener("click", () => {
-    projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
-    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
-});
-
 const viewingTasks = () => content.classList.contains("tasks");
 const viewingProject = id => content.classList.contains("project-expand") && document.querySelector(".open").dataset.id === id;
 
@@ -71,6 +66,11 @@ newProjectForm.addEventListener("submit", event => {
     event.preventDefault();
     app.storeProject(createProject());
     app.displayProjects();
+});
+
+newProjectForm.addEventListener("submit", () => {
+    projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
+    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
 });
 
 const deletingTask = () => confirmDeleteForm.classList.contains("deleting-task");
