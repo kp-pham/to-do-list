@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
 });
 
-const addTaskButton = document.getElementById("add-task");
 const projectsDropdown = document.querySelector("select");
 
 const content = document.getElementById("content");
@@ -91,6 +90,8 @@ function deleteProject() {
     app.displayTodoItems();
     app.displayProjects();
     document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
+    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
 }
 
 confirmDeleteForm.addEventListener("submit", () => {

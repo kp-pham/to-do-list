@@ -1,7 +1,7 @@
 import { createDisplayModal, createCloseModal, createClearForm } from "./utils.js";
 
 const addTaskButton = document.getElementById("add-task");
-const newTaskModal = document.getElementById("new-task");
+const newTaskModal = document.getElementById("task-modal");
 const newTaskForm = newTaskModal.firstElementChild;
 const cancelTaskButton = newTaskForm.lastElementChild.firstElementChild;
 
