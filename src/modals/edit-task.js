@@ -22,7 +22,6 @@ const fillPriority = () => document.querySelector(`input[name="priority"][value=
 
 function fillProject() {
     const dropdown = formSections[3].lastElementChild;
-
     const projectId = document.querySelector(".task-view").dataset.projectId;
 
     if (projectId !== "")
@@ -43,6 +42,7 @@ function fillFields() {
 function editTask() {
     taskModal.classList.remove(...taskModal.classList);
     taskModal.classList.add("editing-task");
+    taskForm.lastElementChild.lastElementChild.textContent = "Save changes";
 
     fillFields();
     createDisplayModal(taskModal)();
