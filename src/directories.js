@@ -3,6 +3,8 @@ const openedFolder = document.getElementById("folder-open");
 const closedFolder = document.getElementById("folder-closed");
 
 function displayDirectories(projects) {
+    directories.textContent = "";    
+
     projects.forEach(project => displayDirectory(project));
 }
 

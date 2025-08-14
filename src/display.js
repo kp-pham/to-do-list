@@ -1,7 +1,7 @@
 import { TodoItem, Project } from "./models.js";
 import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem } from "./storage/storage.js";
 import { displayTasks, displayTaskView } from "./tasks.js";
-import { displayDirectories, displayDirectory } from "./directories.js";
+import { displayDirectories } from "./directories.js";
 import { compareAsc } from "date-fns";
 
 class DisplayController {
@@ -57,12 +57,12 @@ const displaysTodoItems = {
 };
 
 const displaysProjects = {
-    displayProjects() {
-        displayDirectories(Object.values(this.projects));
+    compareTitles(a, b) {
+        return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
     },
 
-    displayProject() {
-        displayDirectory(Object.values(this.projects).at(-1));
+    displayProjects() {
+        displayDirectories(Object.values(this.projects).sort((a, b) => this.compareTitles(a, b)));
     }
 };
 

@@ -56,7 +56,7 @@ newTaskForm.addEventListener("submit", event => {
 newProjectForm.addEventListener("submit", event => {
     event.preventDefault();
     app.storeProject(createProject());
-    app.displayProject();
+    app.displayProjects();
 });
 
 confirmDeleteForm.addEventListener("submit", () => {
