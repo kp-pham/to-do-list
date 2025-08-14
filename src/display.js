@@ -48,21 +48,41 @@ const removesTodoItems = {
 
 const displaysTodoItems = {    
     displayTodoItems() {
-        displayTasks(Object.values(this.todoItems).sort((a, b) => compareAsc(a.dueDate, b.dueDate)));
+        displayTasks(Object.values(this.todoItems).sort((a, b) => this.compareTodoItems(a, b)));
     },
 
     expandTodoItem(todoItem) {
         displayTaskView(todoItem);
+    },
+
+    compareTodoItems(a, b) {
+        const difference = this.compareDueDates(a, b);
+
+        return this.differenceBetweenDueDates(difference) ? difference : this.comparePriority(a, b);
+    },
+
+    compareDueDates(a, b) {
+        return compareAsc(a.dueDate, b.dueDate);
+    },
+
+    differenceBetweenDueDates(difference) {
+        return difference !== 0;
+    },
+
+    comparePriority(a, b) {
+        const priority_levels = { "high": 0, "medium": 1, "low": 2 };
+
+        return priority_levels[a.priority] - priority_levels[b.priority];
     }
 };
 
 const displaysProjects = {
-    compareTitles(a, b) {
-        return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
-    },
-
     displayProjects() {
         displayDirectories(Object.values(this.projects).sort((a, b) => this.compareTitles(a, b)));
+    },
+
+    compareTitles(a, b) {
+        return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
     }
 };
 
