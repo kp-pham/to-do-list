@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     app.displayTodoItems();
     app.displayProjects();
+    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
 });
 
 const addTaskButton = document.getElementById("add-task");
@@ -19,7 +20,7 @@ const projectsDropdown = document.querySelector("select");
 
 const content = document.getElementById("content");
 const projects = document.querySelector(".projects");
-const newTaskForm = document.getElementById("new-task");
+const newTaskForm = document.getElementById("task-modal");
 const newProjectForm = document.getElementById("new-project");
 const confirmDeleteForm = document.getElementById("confirm-delete");
 
@@ -38,7 +39,7 @@ function createOption(project) {
     const option = document.createElement("option");
     option.textContent = project.title;
     option.value = project.title;
-    option.dataset.projectId = project.id;
+    option.dataset.id = project.id;
 
     return option;
 }
