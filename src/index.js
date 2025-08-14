@@ -50,7 +50,7 @@ addTaskButton.addEventListener("click", () => {
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
     app.storeTodoItem(createTodoItem());
-    app.displayTodoItem();
+    app.displayTodoItems();
 });
 
 newProjectForm.addEventListener("submit", event => {

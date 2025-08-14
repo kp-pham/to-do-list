@@ -122,4 +122,4 @@ function createDescription(description) {
     return taskDescription;
 }
 
-export { displayTasks, displayTask, displayTaskView };
+export { displayTasks, displayTaskView };
