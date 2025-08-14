@@ -49,13 +49,21 @@ addTaskButton.addEventListener("click", () => {
 });
 
 const viewingTasks = () => content.classList.contains("tasks");
+const viewingProject = id => content.classList.contains("project-expand") && document.querySelector(".open").dataset.id === id;
 
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
-    app.storeTodoItem(createTodoItem());
 
-    if (viewingTasks())
+    const todoItem = createTodoItem();
+    app.storeTodoItem(todoItem);
+
+    if (viewingTasks()) {
         app.displayTodoItems();
+    }
+    else if (viewingProject(todoItem.projectId)) {
+        app.displayTodoItems();
+        app.expandProject(document.querySelector(".open").dataset.id);
+    }
 });
 
 newProjectForm.addEventListener("submit", event => {

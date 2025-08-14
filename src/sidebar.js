@@ -3,6 +3,7 @@ const viewTasks = document.getElementById("view-tasks");
 const projects = document.querySelector(".projects");
 
 const pressedButton = target => target.tagName === "BUTTON";
+const pressedTab = target => target.id === "view-tasks" || document.querySelector(".projects").contains(target);
 
 function updateSidebar(target) {
     const opened = document.querySelector(".open");
@@ -14,6 +15,6 @@ function updateSidebar(target) {
 }
 
 sidebar.addEventListener("click", event => {
-    if (pressedButton(event.target))
+    if (pressedButton(event.target) && pressedTab(event.target))
         updateSidebar(event.target);
 });

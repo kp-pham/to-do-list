@@ -25,8 +25,9 @@ function displayTaskView(todoItem) {
 function createTask(todoItem) {
     const task = document.createElement("button");
     task.classList.add("task");
-    task.dataset.priority = todoItem.priority;
     task.dataset.id = todoItem.id;
+    task.dataset.projectId = todoItem.projectId;
+    task.dataset.priority = todoItem.priority;
 
     task.appendChild(createTitle(todoItem.title));
     task.appendChild(createDueDate(todoItem.dueDate));
