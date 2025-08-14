@@ -40,6 +40,7 @@ function createTaskView(todoItem) {
     taskView.classList.add("task-view");
     taskView.dataset.priority = todoItem.priority;
     taskView.dataset.id = todoItem.id;
+    taskView.dataset.projectId = todoItem.projectId !== null ? todoItem.projectId : "";
 
     taskView.appendChild(createHeader(todoItem));
     taskView.appendChild(createButtons());
