@@ -72,12 +72,31 @@ newProjectForm.addEventListener("submit", event => {
     app.displayProjects();
 });
 
-confirmDeleteForm.addEventListener("submit", () => {
+const deletingTask = () => confirmDeleteForm.classList.contains("deleting-task");
+const deletingProject = () => confirmDeleteForm.classList.contains("deleting-project");
+
+function deleteTask() {
     const id = document.querySelector(".task-view").dataset.id;
     app.removeTodoItem(id);
-    
+
     app.displayTodoItems();
     document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+}
+
+function deleteProject() {
+    const id = document.querySelector(".project-view").dataset.id;
+    app.removeProject(id);
+
+    app.displayTodoItems();
+    document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
+}
+
+confirmDeleteForm.addEventListener("submit", () => {
+    if (deletingTask())
+        deleteTask();
+
+    else if (deletingProject())
+        deleteProject();
 });
 
 projects.addEventListener("click", event => {

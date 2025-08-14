@@ -1,5 +1,5 @@
 import { TodoItem, Project } from "./models.js";
-import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem } from "./storage/storage.js";
+import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem, deleteProject } from "./storage/storage.js";
 import { displayTasks, displayTaskView } from "./tasks.js";
 import { displayDirectories, displayDirectoryView } from "./directories.js";
 import { compareAsc } from "date-fns";
@@ -15,6 +15,11 @@ const processesTodoItems = {
     processTodoItems() {
         for (const [id, data] of Object.entries(loadTodoItems()))
             this.todoItems[id] = TodoItem.fromData(data);
+    },
+
+    updateTodoItems() {
+        this.todoItems = {};
+        this.processTodoItems();
     }
 };
 
@@ -45,6 +50,14 @@ const removesTodoItems = {
         deleteTodoItem(id);
     }
 }
+
+const removesProjects = {
+    removeProject(id) {
+        delete this.projects[id];
+        deleteProject(id);
+        this.updateTodoItems();
+    }  
+};
 
 const displaysTodoItems = {    
     displayTodoItems() {
@@ -101,6 +114,7 @@ Object.assign(DisplayController.prototype, processesProjects);
 Object.assign(DisplayController.prototype, storesTodoItems);
 Object.assign(DisplayController.prototype, storesProjects);
 Object.assign(DisplayController.prototype, removesTodoItems);
+Object.assign(DisplayController.prototype, removesProjects);
 Object.assign(DisplayController.prototype, displaysTodoItems);
 Object.assign(DisplayController.prototype, displaysProjects);
 
