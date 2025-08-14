@@ -1,7 +1,6 @@
 class Entity {
     constructor(title, description) {
         this.title = title;
-        this.description = description;
         this.id = crypto.randomUUID();
     }
 }
@@ -38,7 +37,8 @@ const belongsToProject = {
 
 class TodoItem extends Entity {
     constructor(title, description, dueDate, priority, projectId) {
-        super(title, description);
+        super(title);
+        this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.projectId = projectId;
@@ -60,12 +60,12 @@ Object.assign(TodoItem.prototype, hasPriority);
 Object.assign(TodoItem.prototype, belongsToProject);
 
 class Project extends Entity {
-    constructor(title, description) {
-        super(title, description);
+    constructor(title) {
+        super(title);
     }
 
-    static fromData({ title, description, id }) {
-        const project = new Project(title, description);
+    static fromData({ title, id }) {
+        const project = new Project(title);
         project.id = id;
         
         return project;
@@ -73,6 +73,5 @@ class Project extends Entity {
 }
 
 Object.assign(Project.prototype, hasTitle);
-Object.assign(Project.prototype, hasDescription);
 
 export { TodoItem, Project };

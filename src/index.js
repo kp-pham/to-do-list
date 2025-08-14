@@ -88,6 +88,7 @@ function deleteProject() {
     app.removeProject(id);
 
     app.displayTodoItems();
+    app.displayProjects();
     document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
 }
 

@@ -37,10 +37,9 @@ function getProjectId() {
 }
 
 function createProject() {
-    return new Project(getProjectName(), getProjectDescription());
+    return new Project(getProjectName());
 }
 
 const getProjectName = () => document.getElementById("project-name").value;
-const getProjectDescription = () => document.getElementById("project-description").value;
 
 export { createDisplayModal, createCloseModal, createClearForm, createTodoItem, createProject };
