@@ -2,6 +2,8 @@ const content = document.getElementById("content");
 const directories = document.querySelector(".projects");
 const openedFolder = document.getElementById("folder-open");
 const closedFolder = document.getElementById("folder-closed");
+const editFolder = document.getElementById("edit-folder");
+const removeFolder = document.getElementById("remove-folder");
 
 function displayDirectories(projects) {
     directories.textContent = "";    
@@ -47,9 +49,35 @@ function createDirectoryView(project) {
     directoryView.classList.add("project-view");
 
     directoryView.appendChild(createTitle(project));
-    directoryView.appendChild(createDescription(project));
+    directoryView.appendChild(createButtons());
 
     return directoryView;
+}
+
+function createButtons() {
+    const buttons = document.createElement("div");
+    buttons.classList.add("buttons");
+
+    buttons.appendChild(createEditButton());
+    buttons.appendChild(createDeleteButton());
+
+    return buttons;
+}
+
+function createEditButton() {
+    const button = document.createElement("button");
+    button.id = "edit-project";
+    button.appendChild(createFolderIcon(editFolder));
+
+    return button;
+}
+
+function createDeleteButton() {
+    const button = document.createElement("button");
+    button.id = "delete-project";
+    button.appendChild(createFolderIcon(removeFolder));
+
+    return button; 
 }
 
 function createTitle(project) {
@@ -58,14 +86,6 @@ function createTitle(project) {
     title.textContent = project.title;
 
     return title;
-}
-
-function createDescription(project) {
-    const description = document.createElement("p");
-    description.classList.add("description");
-    description.textContent = project.description;
-
-    return description;
 }
 
 export { displayDirectories, displayDirectoryView };
