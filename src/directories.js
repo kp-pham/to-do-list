@@ -47,6 +47,7 @@ function createGetIconFromTemplate(template) {
 function createDirectoryView(project) {
     const directoryView = document.createElement("div");
     directoryView.classList.add("project-view");
+    directoryView.dataset.id = project.id;
 
     directoryView.appendChild(createTitle(project));
     directoryView.appendChild(createButtons());
