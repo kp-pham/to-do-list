@@ -48,10 +48,14 @@ addTaskButton.addEventListener("click", () => {
     Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
 });
 
+const viewingTasks = () => content.classList.contains("tasks");
+
 newTaskForm.addEventListener("submit", event => {
     event.preventDefault();
     app.storeTodoItem(createTodoItem());
-    app.displayTodoItems();
+
+    if (viewingTasks())
+        app.displayTodoItems();
 });
 
 newProjectForm.addEventListener("submit", event => {
