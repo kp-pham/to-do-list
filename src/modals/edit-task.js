@@ -15,13 +15,12 @@ content.addEventListener("click", event => {
 taskModal.addEventListener("close", createClearForm(taskForm));
 taskForm.addEventListener("submit", createCloseModal(taskModal));
 
-const displayTitle = () => formSections[0].lastElementChild.value = document.querySelector(".title").textContent;
-const displayDueDate = () => formSections[1].lastElementChild.value = formatDueDate(document.querySelector(".due-date").textContent);
-const displayDescription = () => formSections[2].lastElementChild.value = document.querySelector(".description").textContent;
-// const displayProject = () => formSections[3].lastElementChild.value = document.querySelector(".task-view").dataset.projectId !== "" ? document.querySelector(`option[data-id="${document.querySelector(".task-view").dataset.projectId}"]`).value : "none";
-const displayPriority = () => document.querySelector(`input[name="priority"][value=${document.querySelector(".task-view").dataset.priority}]`).checked = true; 
+const fillTitle = () => formSections[0].lastElementChild.value = document.querySelector(".title").textContent;
+const fillDueDate = () => formSections[1].lastElementChild.value = formatDueDate(document.querySelector(".due-date").textContent);
+const fillDescription = () => formSections[2].lastElementChild.value = document.querySelector(".description").textContent;
+const fillPriority = () => document.querySelector(`input[name="priority"][value=${document.querySelector(".task-view").dataset.priority}]`).checked = true; 
 
-function displayProject() {
+function fillProject() {
     const dropdown = formSections[3].lastElementChild;
 
     const projectId = document.querySelector(".task-view").dataset.projectId;
@@ -33,18 +32,20 @@ function displayProject() {
         dropdown.value = "none";
 }
 
+function fillFields() {
+    fillTitle();
+    fillDueDate();
+    fillProject();
+    fillDescription();
+    fillPriority();
+}
+
 function editTask() {
     taskModal.classList.remove(...taskModal.classList);
     taskModal.classList.add("editing-task");
 
+    fillFields();
     createDisplayModal(taskModal)();
-
-    displayTitle();
-    displayDueDate();
-    displayDescription();
-    displayProject();
-    displayPriority();
-
 }
 
 function formatDueDate(dueDate) {
