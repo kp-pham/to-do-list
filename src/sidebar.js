@@ -1,8 +1,8 @@
 const sidebar = document.querySelector("nav");
 const viewTasks = document.getElementById("view-tasks");
+const projects = document.querySelector(".projects");
 
-const selectedViewTasks = target => target.id === "view-tasks";
-const selectedProject = target => target.parentElement.classList.contains("projects");
+const pressedButton = target => target.tagName === "BUTTON";
 
 function updateSidebar(target) {
     const opened = document.querySelector(".open");
@@ -14,6 +14,6 @@ function updateSidebar(target) {
 }
 
 sidebar.addEventListener("click", event => {
-    if (selectedViewTasks(event.target) || selectedProject(event.target))
+    if (pressedButton(event.target))
         updateSidebar(event.target);
 });
