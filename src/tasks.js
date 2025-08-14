@@ -1,6 +1,6 @@
 const content = document.getElementById("content");
-const editTask = document.getElementById("edit-task");
-const deleteTask = document.getElementById("delete-task");
+const editTask = document.getElementById("edit-file");
+const deleteTask = document.getElementById("remove-file");
 
 function displayTasks(todoItems) {
     content.textContent = "";
@@ -70,7 +70,7 @@ function createButtons() {
 
 function createEditButton() {
     const button = document.createElement("button");
-    button.id = "edit"
+    button.id = "edit-task"
     button.appendChild(createTaskIcon(editTask));
 
     return button;
@@ -78,7 +78,7 @@ function createEditButton() {
 
 function createDeleteButton() {
     const button = document.createElement("button");
-    button.id = "delete";
+    button.id = "delete-task";
     button.appendChild(createTaskIcon(deleteTask));
 
     return button;
