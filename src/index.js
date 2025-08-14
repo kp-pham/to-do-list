@@ -19,7 +19,7 @@ const projectsDropdown = document.querySelector("select");
 
 const content = document.getElementById("content");
 const projects = document.querySelector(".projects");
-const newTaskForm = document.getElementById("task-modal");
+const taskForm = document.getElementById("task-modal");
 const newProjectForm = document.getElementById("new-project");
 const confirmDeleteForm = document.getElementById("confirm-delete");
 
@@ -46,16 +46,23 @@ function createOption(project) {
 const viewingTasks = () => content.classList.contains("tasks");
 const viewingProject = id => content.classList.contains("project-expand") && document.querySelector(".open").dataset.id === id;
 
-newTaskForm.addEventListener("submit", event => {
+taskForm.addEventListener("submit", event => {
     event.preventDefault();
 
-    const todoItem = createTodoItem();
-    app.storeTodoItem(todoItem);
-
-    if (viewingTasks()) {
+    if (taskForm.classList.contains("editing-task")) {
+        const todoItem = createTodoItem();
+        todoItem.id = document.querySelector(".task-view").dataset.id;
+        app.updateTodoItem(todoItem);
+        app.expandTodoItem(todoItem);
+    }
+    else if (viewingTasks()) {
+        const todoItem = createTodoItem();
+        app.storeTodoItem(todoItem);
         app.displayTodoItems();
     }
     else if (viewingProject(todoItem.projectId)) {
+        const todoItem = createTodoItem();
+        app.storeTodoItem(todoItem);
         app.displayTodoItems();
         app.expandProject(document.querySelector(".open").dataset.id);
     }

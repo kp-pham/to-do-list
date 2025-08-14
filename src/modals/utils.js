@@ -33,7 +33,7 @@ function getProjectId() {
     const projectsDropdown = document.querySelector("select");
     const selectedOption = projectsDropdown.options[projectsDropdown.selectedIndex];
 
-    return noProjectSelected(selectedOption) ? null : selectedOption.dataset.projectId;
+    return noProjectSelected(selectedOption) ? "" : selectedOption.dataset.id;
 }
 
 function createProject() {
