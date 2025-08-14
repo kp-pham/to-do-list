@@ -2,6 +2,7 @@ import { TodoItem, Project } from "./models.js";
 import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem } from "./storage/storage.js";
 import { displayTasks, displayTask, displayTaskView } from "./tasks.js";
 import { displayDirectories, displayDirectory } from "./directories.js";
+import { compareAsc } from "date-fns";
 
 class DisplayController {
     constructor() {
@@ -47,7 +48,7 @@ const removesTodoItems = {
 
 const displaysTodoItems = {    
     displayTodoItems() {
-        displayTasks(Object.values(this.todoItems));
+        displayTasks(Object.values(this.todoItems).sort((a, b) => compareAsc(a.dueDate, b.dueDate)));
     },
 
     displayTodoItem() {
