@@ -18,12 +18,8 @@ const confirmDeleteForm = document.getElementById("confirm-delete");
 const todoItemExpanded = target => target.classList.contains("task") || target.parentElement.classList.contains("task");
 
 content.addEventListener("click", event => {
-    if (todoItemExpanded(event.target)) {
-        document.querySelector(".open").classList.remove("open");
-
-        const todoItem = event.target.classList.contains("task") ? event.target : event.target.parentElement;
-        app.expandTodoItem(app.todoItems[todoItem.dataset.id]);
-    }
+    if (todoItemExpanded(event.target))
+        expandTodoItem(event);
 });
 
 function createOption(project) {
@@ -124,4 +120,11 @@ function loadApplication() {
     app.displayTodoItems();
     app.displayProjects();
     Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
+}
+
+function expandTodoItem(event) {
+    document.querySelector(".open").classList.remove("open");
+
+    const todoItem = event.target.classList.contains("task") ? event.target : event.target.parentElement;
+    app.expandTodoItem(app.todoItems[todoItem.dataset.id]);
 }
