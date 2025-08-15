@@ -1,3 +1,5 @@
+import { createGetIconFromTemplate, createTitle } from "./utils.js";
+
 const content = document.getElementById("content");
 const directories = document.querySelector(".projects");
 const openedFolder = document.getElementById("folder-open");
@@ -38,18 +40,12 @@ function createFolderIcon(template) {
     return createGetIconFromTemplate(template)();
 }
 
-function createGetIconFromTemplate(template) {
-    return function() {
-        return template.content.firstElementChild.cloneNode(true);
-    }
-}
-
 function createDirectoryView(project) {
     const directoryView = document.createElement("div");
     directoryView.classList.add("project-view");
     directoryView.dataset.id = project.id;
 
-    directoryView.appendChild(createTitle(project));
+    directoryView.appendChild(createTitle(project.title));
     directoryView.appendChild(createButtons());
 
     return directoryView;
@@ -79,14 +75,6 @@ function createDeleteButton() {
     button.appendChild(createFolderIcon(removeFolder));
 
     return button; 
-}
-
-function createTitle(project) {
-    const title = document.createElement("h1");
-    title.classList.add("title");
-    title.textContent = project.title;
-
-    return title;
 }
 
 export { displayDirectories, displayDirectoryView };

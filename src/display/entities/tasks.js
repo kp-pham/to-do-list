@@ -1,3 +1,5 @@
+import { createGetIconFromTemplate, createTitle } from "./utils.js";
+
 const content = document.getElementById("content");
 const editTask = document.getElementById("edit-file");
 const deleteTask = document.getElementById("remove-file");
@@ -87,20 +89,6 @@ function createDeleteButton() {
 
 function createTaskIcon(template) {
     return createGetIconFromTemplate(template)();
-}
-
-function createGetIconFromTemplate(template) {
-    return function() {
-        return template.content.firstElementChild.cloneNode(true);
-    }
-}
-
-function createTitle(title) {
-    const taskTitle = document.createElement("h1");
-    taskTitle.classList.add("title");
-    taskTitle.textContent = title;
-
-    return taskTitle;
 }
 
 function createDueDate(dueDate) {

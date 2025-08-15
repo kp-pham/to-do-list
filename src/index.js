@@ -71,7 +71,7 @@ taskForm.addEventListener("submit", event => {
 projectForm.addEventListener("submit", event => {
     event.preventDefault();
 
-    if (projectForm.classList.add("adding-project")) {
+    if (projectForm.classList.contains("adding-project")) {
         app.storeProject(createProject());
         app.displayProjects();
 
