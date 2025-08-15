@@ -1,4 +1,4 @@
-import { createTodoItem, createProject } from "./modals/modals.js";
+import { createTodoItem, createProject } from "./modals";
 import { DisplayController } from "./display";
 import "./interface";
 import "./styles.css";
