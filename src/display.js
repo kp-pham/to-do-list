@@ -64,6 +64,13 @@ const updatesTodoItems = {
         this.todoItems[todoItem.id] = todoItem;
         saveTodoItem(todoItem);
     }
+};
+
+const updatesProjects = {
+    updateProject(project) {
+        this.projects[project.id] = project;
+        saveProject(project);
+    }
 }
 
 const displaysTodoItems = {    
@@ -123,6 +130,7 @@ Object.assign(DisplayController.prototype, storesProjects);
 Object.assign(DisplayController.prototype, removesTodoItems);
 Object.assign(DisplayController.prototype, removesProjects);
 Object.assign(DisplayController.prototype, updatesTodoItems);
+Object.assign(DisplayController.prototype, updatesProjects);
 Object.assign(DisplayController.prototype, displaysTodoItems);
 Object.assign(DisplayController.prototype, displaysProjects);
 

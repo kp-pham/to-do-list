@@ -9,7 +9,7 @@ const selectedEditTask = target => target.id === "edit-task";
 
 content.addEventListener("click", event => {
     if (selectedEditTask(event.target))
-        editTask();
+        createEditTaskModal();
 });
 
 taskModal.addEventListener("close", createClearForm(taskForm));
@@ -39,7 +39,7 @@ function fillFields() {
     fillPriority();
 }
 
-function editTask() {
+function createEditTaskModal() {
     taskModal.classList.remove(...taskModal.classList);
     taskModal.classList.add("editing-task");
     taskForm.lastElementChild.lastElementChild.textContent = "Save changes";

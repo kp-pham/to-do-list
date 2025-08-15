@@ -20,7 +20,7 @@ const projectsDropdown = document.querySelector("select");
 const content = document.getElementById("content");
 const projects = document.querySelector(".projects");
 const taskForm = document.getElementById("task-modal");
-const newProjectForm = document.getElementById("new-project");
+const projectForm = document.getElementById("project-modal");
 const confirmDeleteForm = document.getElementById("confirm-delete");
 
 const todoItemExpanded = target => target.classList.contains("task") || target.parentElement.classList.contains("task");
@@ -68,15 +68,22 @@ taskForm.addEventListener("submit", event => {
     }
 });
 
-newProjectForm.addEventListener("submit", event => {
+projectForm.addEventListener("submit", event => {
     event.preventDefault();
-    app.storeProject(createProject());
-    app.displayProjects();
-});
 
-newProjectForm.addEventListener("submit", () => {
-    projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
-    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
+    if (projectForm.classList.add("adding-project")) {
+        app.storeProject(createProject());
+        app.displayProjects();
+
+        projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
+        Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
+    }
+    else {
+        const project = createProject();
+        project.id = document.querySelector(".project-view").dataset.id;
+        app.updateProject(project);
+        app.expandProject(project.id);
+    }
 });
 
 const deletingTask = () => confirmDeleteForm.classList.contains("deleting-task");
