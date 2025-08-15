@@ -12,9 +12,17 @@ const loadsPageContent = {
         this.controller.processProjects();
         this.controller.displayTodoItems();
         this.controller.displayProjects();
+        Object.values(this.controller.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
+    }
+};
+
+const expandsTodoItems = {
+    expandTodoItem(todoItem) {
+        this.controller.expandTodoItem(this.controller.todoItems[todoItem.dataset.id]);
     }
 };
 
 Object.assign(Application.prototype, loadsPageContent);
+Object.assign(Application.prototype, expandsTodoItems);
 
 export default Application;

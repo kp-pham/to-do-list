@@ -8,23 +8,27 @@ const todoApp = new Application();
 
 const app = new DisplayController();
 
+const content = document.getElementById("content");
+const projects = document.querySelector(".projects");
+const taskForm = document.getElementById("task-modal").firstElementChild;
+const projectForm = document.getElementById("project-modal").firstElementChild;
+const confirmDeleteForm = document.getElementById("confirm-delete").firstElementChild;
+
+const projectsDropdown = document.querySelector("select");
+
 document.addEventListener("DOMContentLoaded", function() {
     todoApp.load();
 });
 
-const projectsDropdown = document.querySelector("select");
-
-const content = document.getElementById("content");
-const projects = document.querySelector(".projects");
-const taskForm = document.getElementById("task-modal");
-const projectForm = document.getElementById("project-modal");
-const confirmDeleteForm = document.getElementById("confirm-delete");
-
 const todoItemExpanded = target => target.classList.contains("task") || target.parentElement.classList.contains("task");
 
-content.addEventListener("click", event => {
-    if (todoItemExpanded(event.target))
-        expandTodoItem(event);
+content.addEventListener("click", function(event) {
+    if (todoItemExpanded(event.target)) {
+        document.querySelector(".open").classList.remove("open");
+        const todoItem = event.target.classList.contains("task") ? event.target : event.target.parentElement;
+
+        todoApp.expandTodoItem(todoItem);
+    }
 });
 
 function createOption(project) {
@@ -128,8 +132,6 @@ function loadApplication() {
 }
 
 function expandTodoItem(event) {
-    document.querySelector(".open").classList.remove("open");
-
-    const todoItem = event.target.classList.contains("task") ? event.target : event.target.parentElement;
+    
     app.expandTodoItem(app.todoItems[todoItem.dataset.id]);
 }
