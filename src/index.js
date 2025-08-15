@@ -1,5 +1,5 @@
 import { createTodoItem, createProject } from "./modals/modals.js";
-import DisplayController from "./display.js";
+import DisplayController from "./display/display.js";
 import "./sidebar.js";
 import "./themes.js";
 import "./styles.css";

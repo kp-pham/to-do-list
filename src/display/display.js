@@ -1,5 +1,5 @@
-import { TodoItem, Project } from "./models.js";
-import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem, deleteProject } from "./storage/storage.js";
+import { TodoItem, Project } from "../models.js";
+import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem, deleteProject } from "../storage/storage.js";
 import { displayTasks, displayTaskView } from "./tasks.js";
 import { displayDirectories, displayDirectoryView } from "./directories.js";
 import { compareAsc } from "date-fns";
