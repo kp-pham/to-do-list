@@ -1,4 +1,4 @@
-import { TodoItem, Project } from "../models.js"
+import { TodoItem, Project } from "../display/entities/models.js"
 
 function createDisplayModal(modal) {
     return function() {

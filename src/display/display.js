@@ -1,4 +1,4 @@
-import { TodoItem, Project } from "../models.js";
+import { TodoItem, Project } from "./entities/models.js";
 import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem, deleteProject } from "../storage/storage.js";
 import { displayTasks, displayTaskView } from "./entities/tasks.js";
 import { displayDirectories, displayDirectoryView } from "./entities/directories.js";
