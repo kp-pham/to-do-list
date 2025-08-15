@@ -22,7 +22,14 @@ const expandsTodoItems = {
     }
 };
 
+const expandsProjects = {
+    expandProject(projectId) {
+        this.controller.expandProject(projectId);
+    }
+};
+
 Object.assign(Application.prototype, loadsPageContent);
 Object.assign(Application.prototype, expandsTodoItems);
+Object.assign(Application.prototype, expandsProjects);
 
 export default Application;

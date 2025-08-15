@@ -10,9 +10,9 @@ const app = new DisplayController();
 
 const content = document.getElementById("content");
 const projects = document.querySelector(".projects");
-const taskForm = document.getElementById("task-modal").firstElementChild;
-const projectForm = document.getElementById("project-modal").firstElementChild;
-const confirmDeleteForm = document.getElementById("confirm-delete").firstElementChild;
+const taskModal = document.getElementById("task-modal");
+const projectModal = document.getElementById("project-modal");
+const confirmDeleteModal = document.getElementById("confirm-delete");
 
 const projectsDropdown = document.querySelector("select");
 
@@ -31,6 +31,13 @@ content.addEventListener("click", function(event) {
     }
 });
 
+const projectExpanded = target => target.tagName === "BUTTON";
+
+projects.addEventListener("click", function(event) {
+    if (projectExpanded(event.target))
+        todoApp.expandProject(event.target.dataset.id);
+});
+
 function createOption(project) {
     const option = document.createElement("option");
     option.textContent = project.title;
@@ -43,10 +50,10 @@ function createOption(project) {
 const viewingTasks = () => content.classList.contains("tasks");
 const viewingProject = id => content.classList.contains("project-expand") && document.querySelector(".open").dataset.id === id;
 
-taskForm.addEventListener("submit", event => {
+taskModal.addEventListener("submit", event => {
     event.preventDefault();
 
-    if (taskForm.classList.contains("editing-task")) {
+    if (taskModal.classList.contains("editing-task")) {
         const todoItem = createTodoItem();
         todoItem.id = document.querySelector(".task-view").dataset.id;
         app.updateTodoItem(todoItem);
@@ -65,10 +72,10 @@ taskForm.addEventListener("submit", event => {
     }
 });
 
-projectForm.addEventListener("submit", event => {
+projectModal.addEventListener("submit", event => {
     event.preventDefault();
 
-    if (projectForm.classList.contains("adding-project")) {
+    if (projectModal.classList.contains("adding-project")) {
         app.storeProject(createProject());
         app.displayProjects();
 
@@ -83,8 +90,8 @@ projectForm.addEventListener("submit", event => {
     }
 });
 
-const deletingTask = () => confirmDeleteForm.classList.contains("deleting-task");
-const deletingProject = () => confirmDeleteForm.classList.contains("deleting-project");
+const deletingTask = () => confirmDeleteModal.classList.contains("deleting-task");
+const deletingProject = () => confirmDeleteModal.classList.contains("deleting-project");
 
 function deleteTask() {
     const id = document.querySelector(".task-view").dataset.id;
@@ -105,17 +112,12 @@ function deleteProject() {
     Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
 }
 
-confirmDeleteForm.addEventListener("submit", () => {
+confirmDeleteModal.addEventListener("submit", () => {
     if (deletingTask())
         deleteTask();
 
     else if (deletingProject())
         deleteProject();
-});
-
-projects.addEventListener("click", event => {
-    if (event.target.tagName === "BUTTON")
-        app.expandProject(event.target.dataset.id);
 });
 
 document.getElementById("view-tasks").addEventListener("click", () => {
