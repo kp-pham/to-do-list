@@ -47,28 +47,29 @@ function createOption(project) {
     return option;
 }
 
-const viewingTasks = () => content.classList.contains("tasks");
+const editingTodoItem = () => taskModal.classList.contains("editing-task");
+const viewingTodoItem = () => content.classList.contains("tasks");
 const viewingProject = id => content.classList.contains("project-expand") && document.querySelector(".open").dataset.id === id;
 
-taskModal.addEventListener("submit", event => {
+const getOpenedProject = () => document.querySelector(".open").dataset.id;
+
+taskModal.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    if (taskModal.classList.contains("editing-task")) {
-        const todoItem = createTodoItem();
+    const todoItem = createTodoItem();
+
+    if (editingTodoItem()) {
         todoItem.id = document.querySelector(".task-view").dataset.id;
-        app.updateTodoItem(todoItem);
-        app.expandTodoItem(todoItem);
+        todoApp.editTodoItem(todoItem);
     }
-    else if (viewingTasks()) {
-        const todoItem = createTodoItem();
-        app.storeTodoItem(todoItem);
-        app.displayTodoItems();
+    else if (viewingTodoItem()) {
+        todoApp.saveTodoItem(todoItem);
+        todoApp.loadTodoItems();
     }
     else if (viewingProject(todoItem.projectId)) {
-        const todoItem = createTodoItem();
-        app.storeTodoItem(todoItem);
-        app.displayTodoItems();
-        app.expandProject(document.querySelector(".open").dataset.id);
+        todoApp.saveTodoItem(todoItem);
+        todoApp.loadTodoItems();
+        todoApp.expandProject(getOpenedProject());
     }
 });
 
@@ -123,17 +124,3 @@ confirmDeleteModal.addEventListener("submit", () => {
 document.getElementById("view-tasks").addEventListener("click", () => {
     app.displayTodoItems();
 });
-
-function loadApplication() {
-    app.processTodoItems();
-    app.processProjects();
-
-    app.displayTodoItems();
-    app.displayProjects();
-    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
-}
-
-function expandTodoItem(event) {
-    
-    app.expandTodoItem(app.todoItems[todoItem.dataset.id]);
-}

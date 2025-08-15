@@ -16,6 +16,12 @@ const loadsPageContent = {
     }
 };
 
+const loadsTodoItems = {
+    loadTodoItems() {
+        this.controller.displayTodoItems();
+    }
+};
+
 const expandsTodoItems = {
     expandTodoItem(todoItem) {
         this.controller.expandTodoItem(this.controller.todoItems[todoItem.dataset.id]);
@@ -28,8 +34,24 @@ const expandsProjects = {
     }
 };
 
+const savesTodoItems = {
+    saveTodoItem(todoItem) {
+        this.controller.storeTodoItem(todoItem);
+    }
+};
+
+const editsTodoItems = {
+    editTodoItem(todoItem) {
+        this.controller.updateTodoItem(todoItem);
+        this.controller.expandTodoItem(todoItem);
+    }
+};
+
 Object.assign(Application.prototype, loadsPageContent);
+Object.assign(Application.prototype, loadsTodoItems);
 Object.assign(Application.prototype, expandsTodoItems);
 Object.assign(Application.prototype, expandsProjects);
+Object.assign(Application.prototype, savesTodoItems);
+Object.assign(Application.prototype, editsTodoItems);
 
 export default Application;
