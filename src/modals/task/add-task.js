@@ -1,4 +1,4 @@
-import { createDisplayModal, createCloseModal, createClearForm } from "./utils.js";
+import { createDisplayModal, createCloseModal, createClearForm } from "../utils.js";
 
 const addTaskButton = document.getElementById("add-task");
 const newTaskModal = document.getElementById("task-modal");
