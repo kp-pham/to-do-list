@@ -1,4 +1,4 @@
-import { createCloseModal, createClearForm } from "./utils.js";
+import { createCloseModal, createClearForm } from "../utils.js";
 import "./add-task.js";
 import "./edit-task.js";
 

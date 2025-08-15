@@ -1,4 +1,4 @@
-import { createDisplayModal, createCloseModal, createClearForm } from "../utils.js";
+import { createDisplayModal } from "../utils.js";
 
 const taskModal = document.getElementById("task-modal");
 const taskForm = taskModal.firstElementChild;
@@ -12,19 +12,25 @@ content.addEventListener("click", event => {
         createEditTaskModal();
 });
 
-taskModal.addEventListener("close", createClearForm(taskForm));
-taskForm.addEventListener("submit", createCloseModal(taskModal));
+const getTitleField = () => formSections[0].lastElementChild;
+const getDueDateField = () => formSections[1].lastElementChild;
+const getDescriptionField = () => formSections[2].lastElementChild;
+const getProjectField = () => formSections[3].lastElementChild;
+const getPriorityField = () => document.querySelector(`input[name="priority"][value=${document.querySelector(".task-view").dataset.priority}]`);
 
-const fillTitle = () => formSections[0].lastElementChild.value = document.querySelector(".title").textContent;
-const fillDueDate = () => formSections[1].lastElementChild.value = formatDueDate(document.querySelector(".due-date").textContent);
-const fillDescription = () => formSections[2].lastElementChild.value = document.querySelector(".description").textContent;
-const fillPriority = () => document.querySelector(`input[name="priority"][value=${document.querySelector(".task-view").dataset.priority}]`).checked = true; 
+const fillTitle = () => getTitleField().value = document.querySelector(".title").textContent;
+const fillDueDate = () => getDueDateField().value = formatDueDate(document.querySelector(".due-date").textContent);
+const fillDescription = () => getDescriptionField().value = document.querySelector(".description").textContent;
+const fillPriority = () => getPriorityField().checked = true; 
+
+const getProjectId = () => document.querySelector(".task-view").dataset.projectId;
+const belongsToNoProject = projectId => projectId !== "";
 
 function fillProject() {
-    const dropdown = formSections[3].lastElementChild;
-    const projectId = document.querySelector(".task-view").dataset.projectId;
+    const dropdown = getProjectField();
+    const projectId = getProjectId();
 
-    if (projectId !== "")
+    if (belongsToNoProject(projectId))
         dropdown.value = document.querySelector(`option[data-id="${projectId}"]`).value;
 
     else
