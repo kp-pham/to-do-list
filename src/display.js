@@ -17,7 +17,7 @@ const processesTodoItems = {
             this.todoItems[id] = TodoItem.fromData(data);
     },
 
-    updateTodoItems() {
+    reprocessTodoItems() {
         this.todoItems = {};
         this.processTodoItems();
     }
@@ -55,7 +55,7 @@ const removesProjects = {
     removeProject(id) {
         delete this.projects[id];
         deleteProject(id);
-        this.updateTodoItems();
+        this.reprocessTodoItems();
     }  
 };
 
