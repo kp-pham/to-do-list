@@ -1,4 +1,4 @@
-import { createDisplayModal, createCloseModal, createClearForm } from "./utils.js";
+import { createDisplayModal, createCloseModal, createClearForm } from "../utils.js";
 
 const editProjectModal = document.getElementById("project-modal");
 const editProjectForm = editProjectModal.firstElementChild;
@@ -10,10 +10,8 @@ content.addEventListener("click", event => {
         createEditProjectModal();
 });
 
-editProjectModal.addEventListener("close", createClearForm(editProjectForm));
-editProjectForm.addEventListener("submit", createCloseModal(editProjectModal));
-
-const fillFields = () => editProjectForm.firstElementChild.lastElementChild.value = document.querySelector(".title").textContent;
+const getTitleField = () => editProjectForm.firstElementChild.lastElementChild;
+const fillFields = () => getTitleField().value = document.querySelector(".title").textContent;
 
 function createEditProjectModal() {
     editProjectModal.classList.remove(...editProjectModal.classList);
