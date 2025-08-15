@@ -1,11 +1,16 @@
 import { createTodoItem, createProject } from "./modals";
 import { DisplayController } from "./display";
+import Application from "./app.js";
 import "./interface";
 import "./styles.css";
 
+const todoApp = new Application();
+
 const app = new DisplayController();
 
-document.addEventListener("DOMContentLoaded", loadApplication);
+document.addEventListener("DOMContentLoaded", function() {
+    todoApp.load();
+});
 
 const projectsDropdown = document.querySelector("select");
 
