@@ -1,7 +1,6 @@
 import { createTodoItem, createProject } from "./modals/modals.js";
 import DisplayController from "./display/display.js";
-import "./sidebar.js";
-import "./themes.js";
+import "./interface/interface.js";
 import "./styles.css";
 
 const app = new DisplayController();
