@@ -5,14 +5,7 @@ import "./styles.css";
 
 const app = new DisplayController();
 
-document.addEventListener("DOMContentLoaded", () => {
-    app.processTodoItems();
-    app.processProjects();
-
-    app.displayTodoItems();
-    app.displayProjects();
-    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
-});
+document.addEventListener("DOMContentLoaded", loadApplication);
 
 const projectsDropdown = document.querySelector("select");
 
@@ -123,3 +116,12 @@ projects.addEventListener("click", event => {
 document.getElementById("view-tasks").addEventListener("click", () => {
     app.displayTodoItems();
 });
+
+function loadApplication() {
+    app.processTodoItems();
+    app.processProjects();
+
+    app.displayTodoItems();
+    app.displayProjects();
+    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
+}
