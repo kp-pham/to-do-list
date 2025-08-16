@@ -12,7 +12,6 @@ const loadsPageContent = {
         this.controller.processProjects();
         this.controller.displayTodoItems();
         this.controller.displayProjects();
-        Object.values(this.controller.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
     }
 };
 
@@ -21,6 +20,18 @@ const loadsTodoItems = {
         this.controller.displayTodoItems();
     }
 };
+
+const loadsProjects = {
+    loadProjects() {
+        this.controller.displayProjects();
+    }
+};
+
+const getsProjects = {
+    getProjects() {
+        return this.controller.projects;
+    }
+}
 
 const expandsTodoItems = {
     expandTodoItem(todoItem) {
@@ -40,6 +51,12 @@ const savesTodoItems = {
     }
 };
 
+const savesProjects = {
+    saveProject(project) {
+        this.controller.storeProject(project);
+    }
+};
+
 const editsTodoItems = {
     editTodoItem(todoItem) {
         this.controller.updateTodoItem(todoItem);
@@ -47,11 +64,22 @@ const editsTodoItems = {
     }
 };
 
+const editsProjects = {
+    editProject(project) {
+        this.controller.updateProject(project);
+        this.controller.expandProject(project.id);
+    }
+};
+
 Object.assign(Application.prototype, loadsPageContent);
 Object.assign(Application.prototype, loadsTodoItems);
+Object.assign(Application.prototype, loadsProjects);
+Object.assign(Application.prototype, getsProjects);
 Object.assign(Application.prototype, expandsTodoItems);
 Object.assign(Application.prototype, expandsProjects);
 Object.assign(Application.prototype, savesTodoItems);
+Object.assign(Application.prototype, savesProjects);
 Object.assign(Application.prototype, editsTodoItems);
+Object.assign(Application.prototype, editsProjects);
 
 export default Application;

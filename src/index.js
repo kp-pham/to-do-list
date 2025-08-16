@@ -18,6 +18,7 @@ const projectsDropdown = document.querySelector("select");
 
 document.addEventListener("DOMContentLoaded", function() {
     todoApp.load();
+    updateProjectDropdown();
 });
 
 const todoItemExpanded = target => target.classList.contains("task") || target.parentElement.classList.contains("task");
@@ -73,23 +74,29 @@ taskModal.addEventListener("submit", function(event) {
     }
 });
 
-projectModal.addEventListener("submit", event => {
+const creatingProject = () => projectModal.classList.contains("adding-project");
+
+projectModal.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    if (projectModal.classList.contains("adding-project")) {
-        app.storeProject(createProject());
-        app.displayProjects();
+    const project = createProject();
 
-        projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
-        Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
+    if (creatingProject()) {
+        todoApp.saveProject(project);
+        todoApp.loadProjects();
+
+        updateProjectDropdown();
     }
     else {
-        const project = createProject();
         project.id = document.querySelector(".project-view").dataset.id;
-        app.updateProject(project);
-        app.expandProject(project.id);
+        todoApp.editProject(project);
     }
 });
+
+function updateProjectDropdown() {
+    projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
+    Object.values(todoApp.getProjects()).forEach(project => projectsDropdown.appendChild(createOption(project)));
+}
 
 const deletingTask = () => confirmDeleteModal.classList.contains("deleting-task");
 const deletingProject = () => confirmDeleteModal.classList.contains("deleting-project");
