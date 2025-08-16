@@ -1,7 +1,7 @@
 {
   "name": "webpack-config",
   "version": "1.0.0",
-  "description": "",
+  "description": "To-do list application in which people create and keep track of tasks to complete and organize them within projects.",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
