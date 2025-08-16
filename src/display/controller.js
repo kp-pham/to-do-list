@@ -2,18 +2,21 @@ import { displayTasks, displayTaskView } from "./tasks.js";
 import { displayDirectories, displayDirectoryView } from "./directories.js";
 import { compareAsc } from "date-fns";
 
-class DisplayController {
-    constructor() {
-        this.todoItems = {};
-        this.projects = {};
-    }
-}
+class DisplayController {}
 
 const displaysTodoItems = {    
     displayTodoItems(todoItems) {
         displayTasks(todoItems.sort((a, b) => this.compareTodoItems(a, b)));
-    },
+    }
+};
 
+const displaysProjects = {
+    displayProjects(projects) {
+        displayDirectories(projects.sort((a, b) => this.compareTitles(a, b)));
+    }
+};
+
+const expandsTodoItems = {
     expandTodoItem(todoItem) {
         displayTaskView(todoItem);
     },
@@ -39,11 +42,7 @@ const displaysTodoItems = {
     }
 };
 
-const displaysProjects = {
-    displayProjects(projects) {
-        displayDirectories(projects.sort((a, b) => this.compareTitles(a, b)));
-    },
-
+const expandsProjects = {
     expandProject(project, todoItems) {
         const todosInProject = todoItems.filter(todoItem => this.belongsToProject(todoItem, project));
         displayTasks(todosInProject.sort((a, b) => this.compareTodoItems(a, b))); 
@@ -61,5 +60,7 @@ const displaysProjects = {
 
 Object.assign(DisplayController.prototype, displaysTodoItems);
 Object.assign(DisplayController.prototype, displaysProjects);
+Object.assign(DisplayController.prototype, expandsTodoItems);
+Object.assign(DisplayController.prototype, expandsProjects);
 
 export default DisplayController;
