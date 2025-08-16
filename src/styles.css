@@ -4,8 +4,15 @@
     --color-project-open: hsl(250, 37%, 97%);
     --color-project-open-hover: hsl(0, 0%, 86%);
     --color-sidebar-bg: hsl(40, 27%, 98%);
+    --color-backdrop-bg: hsla(0, 0%, 0%, 0.8);
     --color-field-bg: hsl(250, 37%, 97%);
     --color-field-border: hsl(0, 0%, 0%);
+    --color-base-button-text: hsl(0, 0%, 100%);
+    --color-cancel-create-bg: hsl(7, 79%, 54%);
+    --color-create-bg: hsl(37, 88%, 41%);
+    --color-base-warning: hsl(7, 79%, 54%);
+    --color-cancel-delete-bg: hsl(0, 0%, 67%);
+    --color-delete-bg: hsl(7, 79%, 54%);
     --color-base-text: hsl(0, 0%, 0%);
     --color-base-bg: hsl(0, 0%, 100%);
     --color-task-high-priority: hsl(360, 88%, 71%);
@@ -17,10 +24,17 @@
     --color-icon-fill: hsl(0, 0%, 100%);
     --color-button-hover: hsl(240, 7%, 22%);
     --color-project-open: hsl(240, 7%, 22%);
-    --color-project-open-hover: hsl(0, 0%, 22%);
+    --color-project-open-hover: hsl(0, 0%, 20%);
     --color-sidebar-bg: hsl(240, 9%, 18%);
+    --color-backdrop-bg: hsla(0, 0%, 0%, 0.8);
     --color-field-bg: hsl(0, 0%, 100%);
     --color-field-border: hsl(0, 0%, 100%);
+    --color-base-button-text: hsl(0, 0%, 100%);
+    --color-cancel-create-bg: hsl(7, 79%, 54%);
+    --color-create-bg: hsl(37, 88%, 41%);
+    --color-base-warning: hsl(7, 79%, 54%);
+    --color-cancel-delete-bg: hsl(0, 0%, 67%);
+    --color-delete-bg: hsl(7, 79%, 54%);
     --color-base-text: hsl(0, 0%, 100%);
     --color-base-bg: hsl(250, 8%, 15%);
     --color-task-high-priority: hsl(359, 51%, 34%);
@@ -264,7 +278,7 @@ nav button > svg {
 }
 
 dialog::backdrop {
-    background-color: rgb(0, 0, 0, 0.8);
+    background-color: var(--color-backdrop-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -319,18 +333,18 @@ section:nth-child(3) textarea {
 }
 
 section:last-child button {
-    color: #FFFFFF;
+    color: var(--color-base-button-text);
     border: none;
     border-radius: 10px;
     padding: 10px 15px;
 }
 
 section:last-child button:first-child {
-    background-color: #E24430;
+    background-color: var(--color-cancel-create-bg);
 }
 
 section:last-child button:last-child {
-    background-color: #C57C06;
+    background-color: var(--color-create-bg);
 }
 
 select {
@@ -359,13 +373,13 @@ select::picker(select) {
 .deleting-project form > p:not(:first-child) {
     display: block;
     font-weight: bold;
-    color: #E24430;
+    color: var(--color-base-warning);
 }
 
 #confirm-delete section:last-child button:first-child {
-    background-color: hsl(0, 0%, 67%);
+    background-color: var(--color-cancel-delete-bg);
 }
 
 #confirm-delete section:last-child button:last-child {
-    background-color: #E24430;
+    background-color: var(--color-delete-bg);
 }
