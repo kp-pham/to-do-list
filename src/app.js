@@ -39,14 +39,14 @@ const processesProjects = {
 };
 
 const expandsTodoItems = {
-    expandTodoItem(todoItem) {
-        this.controller.expandTodoItem(this.todoItems[todoItem.id]);
+    expandTodoItem(todoItemId) {
+        this.controller.expandTodoItem(this.todoItems[todoItemId]);
     }
 };
 
 const expandsProjects = {
     expandProject(projectId) {
-        this.controller.expandProject(projectId);
+        this.controller.expandProject(this.projects[projectId], Object.values(this.todoItems));
     }
 };
 
@@ -67,15 +67,15 @@ const storesProjects = {
 const editsTodoItems = {
     editTodoItem(todoItem) {
         this.todoItems[todoItem.id] = todoItem;
-        this.saveTodoItem(todoItem);
-        this.expandTodoItem(todoItem);
+        this.storeTodoItem(todoItem);
+        this.expandTodoItem(todoItem.id);
     }
 };
 
 const editsProjects = {
     editProject(project) {
         this.projects[project.id] = project;
-        this.saveProject(project);
+        this.storeProject(project);
         this.expandProject(project.id);
     }
 };

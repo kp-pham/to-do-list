@@ -27,9 +27,9 @@ const todoItemExpanded = target => target.classList.contains("task") || target.p
 content.addEventListener("click", function(event) {
     if (todoItemExpanded(event.target)) {
         document.querySelector(".open").classList.remove("open");
-        const todoItem = event.target.classList.contains("task") ? event.target : event.target.parentElement;
 
-        todoApp.expandTodoItem(todoItem);
+        const todoItemButton = event.target.classList.contains("task") ? event.target : event.target.parentElement;
+        todoApp.expandTodoItem(todoItemButton.dataset.id);
     }
 });
 

@@ -44,18 +44,18 @@ const displaysProjects = {
         displayDirectories(projects.sort((a, b) => this.compareTitles(a, b)));
     },
 
-    expandProject(id) {
-        const todosInProject = Object.values(this.todoItems).filter(todoItem => this.belongsToProject(todoItem, id));
+    expandProject(project, todoItems) {
+        const todosInProject = todoItems.filter(todoItem => this.belongsToProject(todoItem, project));
         displayTasks(todosInProject.sort((a, b) => this.compareTodoItems(a, b))); 
-        displayDirectoryView(this.projects[id]);
+        displayDirectoryView(project);
     },
 
     compareTitles(a, b) {
         return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
     },
 
-    belongsToProject(todoItem, id) {
-        return todoItem.projectId === id;
+    belongsToProject(todoItem, project) {
+        return todoItem.projectId === project.id;
     }
 };
 
