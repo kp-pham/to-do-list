@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.getElementById("view-tasks").addEventListener("click", function() {
-    todoApp.loadTodoItems();
+    todoApp.displayTodoItems();
 });
 
 const todoItemExpanded = target => target.classList.contains("task") || target.parentElement.classList.contains("task");
@@ -66,11 +66,11 @@ taskModal.addEventListener("submit", function(event) {
     }
     else if (viewingTodoItem()) {
         todoApp.saveTodoItem(todoItem);
-        todoApp.loadTodoItems();
+        todoApp.displayTodoItems();
     }
     else if (viewingProject(todoItem.projectId)) {
         todoApp.saveTodoItem(todoItem);
-        todoApp.loadTodoItems();
+        todoApp.displayTodoItems();
         todoApp.expandProject(getOpenedProject());
     }
 });
@@ -84,7 +84,7 @@ projectModal.addEventListener("submit", function(event) {
 
     if (creatingProject()) {
         todoApp.saveProject(project);
-        todoApp.loadProjects();
+        todoApp.displayProjects();
 
         updateProjectDropdown();
     }
@@ -96,7 +96,7 @@ projectModal.addEventListener("submit", function(event) {
 
 function updateProjectDropdown() {
     projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
-    Object.values(todoApp.getProjects()).forEach(project => projectsDropdown.appendChild(createOption(project)));
+    Object.values(todoApp.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
 }
 
 const deletingTodoItem = () => confirmDeleteModal.classList.contains("deleting-task");
@@ -108,12 +108,12 @@ const viewingTodoItems = () =>  document.getElementById("view-tasks").dispatchEv
 confirmDeleteModal.addEventListener("submit", function(event) {
     if (deletingTodoItem()) {
         todoApp.deleteTodoItem(getTodoItemId());
-        todoApp.loadTodoItems();
+        todoApp.displayTodoItems();
     }
     else {
         todoApp.deleteProject(getProjectId());
-        todoApp.loadTodoItems();
-        todoApp.loadProjects();
+        todoApp.displayTodoItems();
+        todoApp.displayProjects();
 
         updateProjectDropdown();
     }

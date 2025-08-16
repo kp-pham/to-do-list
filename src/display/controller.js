@@ -11,25 +11,6 @@ class DisplayController {
     }
 }
 
-const processesTodoItems = {
-    processTodoItems() {
-        for (const [id, data] of Object.entries(loadTodoItems()))
-            this.todoItems[id] = TodoItem.fromData(data);
-    },
-
-    reprocessTodoItems() {
-        this.todoItems = {};
-        this.processTodoItems();
-    }
-};
-
-const processesProjects = {
-    processProjects() {
-        for (const [id, data] of Object.entries(loadProjects()))
-            this.projects[id] = Project.fromData(data);
-    }
-};
-
 const storesTodoItems = {
     storeTodoItem(todoItem) {
         this.todoItems[todoItem.id] = todoItem;
@@ -123,8 +104,6 @@ const displaysProjects = {
     }
 };
 
-Object.assign(DisplayController.prototype, processesTodoItems);
-Object.assign(DisplayController.prototype, processesProjects);
 Object.assign(DisplayController.prototype, storesTodoItems);
 Object.assign(DisplayController.prototype, storesProjects);
 Object.assign(DisplayController.prototype, removesTodoItems);

@@ -1,15 +1,18 @@
 import { DisplayController } from "./display";
+import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem, deleteProject } from "./storage";
 
 class Application {
     constructor() {
         this.controller = new DisplayController();
+        this.todoItems = {};
+        this.projects = {};
     }
 }
 
 const loadsPageContent = {
     load() {
-        this.controller.processTodoItems();
-        this.controller.processProjects();
+        this.loadTodoItems();
+        this.loadProjects();
         this.controller.displayTodoItems();
         this.controller.displayProjects();
     }
@@ -17,21 +20,17 @@ const loadsPageContent = {
 
 const loadsTodoItems = {
     loadTodoItems() {
-        this.controller.displayTodoItems();
+        for (const [id, data] of Object.entries(loadTodoItems()))
+            this.todoItems[id] = TodoItem.fromData(data);
     }
 };
 
 const loadsProjects = {
     loadProjects() {
-        this.controller.displayProjects();
+        for (const [id, data] of Object.entries(loadProjects()))
+            this.projects[id] = Project.fromData(data);
     }
 };
-
-const getsProjects = {
-    getProjects() {
-        return this.controller.projects;
-    }
-}
 
 const expandsTodoItems = {
     expandTodoItem(todoItem) {
@@ -83,10 +82,21 @@ const deletesProjects = {
     }
 };
 
+const displaysTodoItems = {
+    displayTodoItems() {
+        this.controller.displayTodoItems();
+    }
+};
+
+const displaysProjects = {
+    displayProjects() {
+        this.controller.displayProjects();
+    }
+};
+
 Object.assign(Application.prototype, loadsPageContent);
 Object.assign(Application.prototype, loadsTodoItems);
 Object.assign(Application.prototype, loadsProjects);
-Object.assign(Application.prototype, getsProjects);
 Object.assign(Application.prototype, expandsTodoItems);
 Object.assign(Application.prototype, expandsProjects);
 Object.assign(Application.prototype, savesTodoItems);
@@ -95,5 +105,7 @@ Object.assign(Application.prototype, editsTodoItems);
 Object.assign(Application.prototype, editsProjects);
 Object.assign(Application.prototype, deletesTodoItems);
 Object.assign(Application.prototype, deletesProjects);
+Object.assign(Application.prototype, displaysTodoItems);
+Object.assign(Application.prototype, displaysProjects);
 
 export default Application;
