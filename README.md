@@ -14,11 +14,7 @@ An additional feature of the application is light mode and dark mode. The theme 
 
 ![Picture with dark mode theme enabled.](./public/images/dark-mode.png)
 
-<<<<<<< HEAD
-<video controls aria-label="Video demonstration of switching between light mode and dark mode." src="public/videos/light-to-dark-mode.mp4" title="Switching Between Light Mode and Dark Mode"></video>
-=======
 <video controls aria-label="Video demonstration of switching between light mode and dark mode." src="https://github.com/user-attachments/assets/6f08d8d0-9487-4931-a74f-cb6aaa35453e" title="Switching Between Light Mode and Dark Mode"></video>
->>>>>>> 9858740c41c838aec566ba7d864cd328b374f289
 
 ## Viewing Tasks Within Projects
 
