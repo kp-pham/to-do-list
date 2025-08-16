@@ -1,4 +1,5 @@
 import { createTodoItem } from "../../modals";
+import { viewTodoItems } from "./utils";
 
 function setUpTaskEvents(app) {
     setUpViewingTasks(app);
@@ -72,13 +73,16 @@ function setUpTaskEdited(app) {
 function setUpTaskDeleted(app) {
     const confirmDeleteModal = document.getElementById("confirm-delete");
 
-    const deletingTodoItem = () => confirmDeleteModal.classList.contains("deleting-task");
-    const getTodoItemId = () => document.querySelector(".task-view").dataset.id;
+    const deletingTask = () => confirmDeleteModal.classList.contains("deleting-task");
+    const getTaskId = () => document.querySelector(".task-view").dataset.id;
 
     confirmDeleteModal.addEventListener("submit", function(event) {
-        if (deletingTodoItem()) {
-            app.deleteTodoItem(getTodoItemId());
+        event.preventDefault();
+
+        if (deletingTask()) {
+            app.deleteTodoItem(getTaskId());
             app.displayTodoItems();
+            viewTodoItems();
         }
     });
 }

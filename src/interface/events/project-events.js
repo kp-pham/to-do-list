@@ -62,15 +62,16 @@ function setUpProjectDeleted(app) {
     const getProjectId = () => document.querySelector(".project-view").dataset.id;
 
     confirmDeleteModal.addEventListener("submit", function(event) {
+        event.preventDefault();
+
         if (deletingProject()) {
             app.deleteProject(getProjectId());
             app.displayTodoItems();
             app.displayProjects();
 
             updateProjectDropdown(app);
+            viewTodoItems();
         }
-
-        viewTodoItems();
     });
 }
 
