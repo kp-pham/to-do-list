@@ -71,6 +71,18 @@ const editsProjects = {
     }
 };
 
+const deletesTodoItems = {
+    deleteTodoItem(todoItemId) {
+        this.controller.removeTodoItem(todoItemId);
+    }
+};
+
+const deletesProjects = {
+    deleteProject(projectId) {
+        this.controller.removeProject(projectId);
+    }
+};
+
 Object.assign(Application.prototype, loadsPageContent);
 Object.assign(Application.prototype, loadsTodoItems);
 Object.assign(Application.prototype, loadsProjects);
@@ -81,5 +93,7 @@ Object.assign(Application.prototype, savesTodoItems);
 Object.assign(Application.prototype, savesProjects);
 Object.assign(Application.prototype, editsTodoItems);
 Object.assign(Application.prototype, editsProjects);
+Object.assign(Application.prototype, deletesTodoItems);
+Object.assign(Application.prototype, deletesProjects);
 
 export default Application;

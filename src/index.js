@@ -1,12 +1,9 @@
 import { createTodoItem, createProject } from "./modals";
-import { DisplayController } from "./display";
 import Application from "./app.js";
 import "./interface";
 import "./styles.css";
 
 const todoApp = new Application();
-
-const app = new DisplayController();
 
 const content = document.getElementById("content");
 const projects = document.querySelector(".projects");
@@ -19,6 +16,10 @@ const projectsDropdown = document.querySelector("select");
 document.addEventListener("DOMContentLoaded", function() {
     todoApp.load();
     updateProjectDropdown();
+});
+
+document.getElementById("view-tasks").addEventListener("click", function() {
+    todoApp.loadTodoItems();
 });
 
 const todoItemExpanded = target => target.classList.contains("task") || target.parentElement.classList.contains("task");
@@ -98,36 +99,24 @@ function updateProjectDropdown() {
     Object.values(todoApp.getProjects()).forEach(project => projectsDropdown.appendChild(createOption(project)));
 }
 
-const deletingTask = () => confirmDeleteModal.classList.contains("deleting-task");
-const deletingProject = () => confirmDeleteModal.classList.contains("deleting-project");
+const deletingTodoItem = () => confirmDeleteModal.classList.contains("deleting-task");
 
-function deleteTask() {
-    const id = document.querySelector(".task-view").dataset.id;
-    app.removeTodoItem(id);
+const getTodoItemId = () => document.querySelector(".task-view").dataset.id;
+const getProjectId = () => document.querySelector(".project-view").dataset.id;
+const viewingTodoItems = () =>  document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
-    app.displayTodoItems();
-    document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
-}
+confirmDeleteModal.addEventListener("submit", function(event) {
+    if (deletingTodoItem()) {
+        todoApp.deleteTodoItem(getTodoItemId());
+        todoApp.loadTodoItems();
+    }
+    else {
+        todoApp.deleteProject(getProjectId());
+        todoApp.loadTodoItems();
+        todoApp.loadProjects();
 
-function deleteProject() {
-    const id = document.querySelector(".project-view").dataset.id;
-    app.removeProject(id);
+        updateProjectDropdown();
+    }
 
-    app.displayTodoItems();
-    app.displayProjects();
-    document.getElementById("view-tasks").dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    projectsDropdown.replaceChildren(projectsDropdown.firstElementChild);
-    Object.values(app.projects).forEach(project => projectsDropdown.appendChild(createOption(project)));
-}
-
-confirmDeleteModal.addEventListener("submit", () => {
-    if (deletingTask())
-        deleteTask();
-
-    else if (deletingProject())
-        deleteProject();
-});
-
-document.getElementById("view-tasks").addEventListener("click", () => {
-    app.displayTodoItems();
+    viewingTodoItems();
 });
