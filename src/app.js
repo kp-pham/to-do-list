@@ -1,6 +1,6 @@
 import { TodoItem, Project } from "./models.js";
 import { DisplayController } from "./display";
-import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem, deleteProject } from "./storage";
+import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem, deleteProject } from "./storage/index.js";
 
 class Application {
     constructor() {
