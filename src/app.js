@@ -23,6 +23,11 @@ const processesTodoItems = {
     processTodoItems() {
         for (const [id, data] of Object.entries(loadTodoItems()))
             this.todoItems[id] = TodoItem.fromData(data);
+    },
+
+    reprocessTodoItems() {
+        this.todoItems = {};
+        this.processTodoItems();
     }
 };
 
@@ -69,20 +74,24 @@ const editsTodoItems = {
 
 const editsProjects = {
     editProject(project) {
-        this.controller.updateProject(project);
-        this.controller.expandProject(project.id);
+        this.projects[project.id] = project;
+        this.saveProject(project);
+        this.expandProject(project.id);
     }
 };
 
-const deletesTodoItems = {
-    deleteTodoItem(todoItemId) {
-        this.controller.removeTodoItem(todoItemId);
+const removesTodoItems = {
+    deleteTodoItem(id) {
+        delete this.todoItems[id];
+        deleteTodoItem(id);
     }
 };
 
-const deletesProjects = {
-    deleteProject(projectId) {
-        this.controller.removeProject(projectId);
+const removesProjects = {
+    deleteProject(id) {
+        delete this.projects[id];
+        deleteProject(id);
+        this.reprocessTodoItems();
     }
 };
 
@@ -107,8 +116,8 @@ Object.assign(Application.prototype, storesTodoItems);
 Object.assign(Application.prototype, storesProjects);
 Object.assign(Application.prototype, editsTodoItems);
 Object.assign(Application.prototype, editsProjects);
-Object.assign(Application.prototype, deletesTodoItems);
-Object.assign(Application.prototype, deletesProjects);
+Object.assign(Application.prototype, removesTodoItems);
+Object.assign(Application.prototype, removesProjects);
 Object.assign(Application.prototype, displaysTodoItems);
 Object.assign(Application.prototype, displaysProjects);
 

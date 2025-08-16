@@ -1,5 +1,3 @@
-import { TodoItem, Project } from "../models.js";
-import { saveTodoItem, saveProject, loadTodoItems, loadProjects, deleteTodoItem, deleteProject } from "../storage";
 import { displayTasks, displayTaskView } from "./tasks.js";
 import { displayDirectories, displayDirectoryView } from "./directories.js";
 import { compareAsc } from "date-fns";
@@ -8,35 +6,6 @@ class DisplayController {
     constructor() {
         this.todoItems = {};
         this.projects = {};
-    }
-}
-
-const removesTodoItems = {
-    removeTodoItem(id) {
-        delete this.todoItems[id];
-        deleteTodoItem(id);
-    }
-}
-
-const removesProjects = {
-    removeProject(id) {
-        delete this.projects[id];
-        deleteProject(id);
-        this.reprocessTodoItems();
-    }  
-};
-
-const updatesTodoItems = {
-    updateTodoItem(todoItem) {
-        this.todoItems[todoItem.id] = todoItem;
-        saveTodoItem(todoItem);
-    }
-};
-
-const updatesProjects = {
-    updateProject(project) {
-        this.projects[project.id] = project;
-        saveProject(project);
     }
 }
 
@@ -90,10 +59,6 @@ const displaysProjects = {
     }
 };
 
-Object.assign(DisplayController.prototype, removesTodoItems);
-Object.assign(DisplayController.prototype, removesProjects);
-Object.assign(DisplayController.prototype, updatesTodoItems);
-Object.assign(DisplayController.prototype, updatesProjects);
 Object.assign(DisplayController.prototype, displaysTodoItems);
 Object.assign(DisplayController.prototype, displaysProjects);
 
