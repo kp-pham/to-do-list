@@ -11,20 +11,6 @@ class DisplayController {
     }
 }
 
-const storesTodoItems = {
-    storeTodoItem(todoItem) {
-        this.todoItems[todoItem.id] = todoItem;
-        saveTodoItem(todoItem);
-    }
-};
-
-const storesProjects = {
-    storeProject(project) {
-        this.projects[project.id] = project;
-        saveProject(project);
-    }
-}
-
 const removesTodoItems = {
     removeTodoItem(id) {
         delete this.todoItems[id];
@@ -55,8 +41,8 @@ const updatesProjects = {
 }
 
 const displaysTodoItems = {    
-    displayTodoItems() {
-        displayTasks(Object.values(this.todoItems).sort((a, b) => this.compareTodoItems(a, b)));
+    displayTodoItems(todoItems) {
+        displayTasks(todoItems.sort((a, b) => this.compareTodoItems(a, b)));
     },
 
     expandTodoItem(todoItem) {
@@ -85,8 +71,8 @@ const displaysTodoItems = {
 };
 
 const displaysProjects = {
-    displayProjects() {
-        displayDirectories(Object.values(this.projects).sort((a, b) => this.compareTitles(a, b)));
+    displayProjects(projects) {
+        displayDirectories(projects.sort((a, b) => this.compareTitles(a, b)));
     },
 
     expandProject(id) {
@@ -104,8 +90,6 @@ const displaysProjects = {
     }
 };
 
-Object.assign(DisplayController.prototype, storesTodoItems);
-Object.assign(DisplayController.prototype, storesProjects);
 Object.assign(DisplayController.prototype, removesTodoItems);
 Object.assign(DisplayController.prototype, removesProjects);
 Object.assign(DisplayController.prototype, updatesTodoItems);

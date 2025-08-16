@@ -65,11 +65,11 @@ taskModal.addEventListener("submit", function(event) {
         todoApp.editTodoItem(todoItem);
     }
     else if (viewingTodoItem()) {
-        todoApp.saveTodoItem(todoItem);
+        todoApp.storeTodoItem(todoItem);
         todoApp.displayTodoItems();
     }
     else if (viewingProject(todoItem.projectId)) {
-        todoApp.saveTodoItem(todoItem);
+        todoApp.storeTodoItem(todoItem);
         todoApp.displayTodoItems();
         todoApp.expandProject(getOpenedProject());
     }
@@ -83,7 +83,7 @@ projectModal.addEventListener("submit", function(event) {
     const project = createProject();
 
     if (creatingProject()) {
-        todoApp.saveProject(project);
+        todoApp.storeProject(project);
         todoApp.displayProjects();
 
         updateProjectDropdown();
