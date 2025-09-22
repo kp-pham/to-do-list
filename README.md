@@ -8,6 +8,42 @@ The other learning objective was the use of the Web Storage API to store data fo
 
 An additional feature of the application is light mode and dark mode. The theme defaults to the preferences of the operating system and users have the option to override the default theme. The application stores the theme which was last used when the user closes the application and uses that theme when the user opens the application again.
 
+## Installation
+
+Clone the repository:
+```bash
+git clone https://github.com/your-username/to-do-list.git
+```
+
+Change into the project directory:
+```bash
+cd to-do-list
+```
+
+Install packages with npm:
+```bash
+npm install
+```
+
+### Production
+
+Build the project:
+```bash
+npm run build
+```
+
+Deploy production build:
+```bash
+npm run deploy
+```
+
+### Development
+
+Start development server:
+```bash
+npm start
+```
+
 ## Light and Dark Mode
 
 ![Picture with light mode theme enabled.](./public/images/light-mode.png)
